@@ -2,16 +2,19 @@
   padding: 50px 0;
   font-family: "Lato", sans-serif;
 }
-.myblog .container {
+.blogs {
   display: flex;
+  justify-items: center;
+  margin-left: 1%;
   justify-content: center;
+  align-items: center;
 }
 .leftBlog {
-width: 40%;
+  width: 40%;
 }
 
 .rightBlog {
-width: 40%;
+  width: 40%;
 }
 .blog_main {
   text-align: center;

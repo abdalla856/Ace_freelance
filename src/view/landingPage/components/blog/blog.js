@@ -6,6 +6,9 @@ const Blog = () => {
     <div className="myblog" id="blog">
       <h1 className="blog_main">Amplify your knowledge</h1>
       <div className="container">
+        <div className="blogs">
+
+
         <div className="leftBlog">
           <div className="img_blog">
             <img
@@ -131,6 +134,8 @@ const Blog = () => {
               </div>
             </div>
           </div>
+        </div>
+
         </div>
       </div>
     </div>

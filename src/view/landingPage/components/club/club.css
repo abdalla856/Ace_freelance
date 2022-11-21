@@ -39,10 +39,10 @@
   color: white;
   border-color: white;
   height: 40px;
-  width:40%;
+  width:60%;
   margin-top: 10px;
 }
-.club_email ::placeholder {
+.club_email::placeholder {
   color: white;
 }
 .club_btn {

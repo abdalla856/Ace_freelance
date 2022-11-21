@@ -73,7 +73,7 @@ const Service = () => {
               style={{
                 position: fix ? "fixed" : "relative",
                 top: fix ? "20%" : bot,
-                // bottom: bot ? "100%" : "100%",
+                bottom: fix ? "100%" : "100%",
               }}
             >
               <li ref={ref_list}>
