@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Ace_freelance/static/css/main.8a814c61.css",
-    "main.js": "/Ace_freelance/static/js/main.f066a700.js",
+    "main.css": "/Ace_freelance/static/css/main.96ae3b0d.css",
+    "main.js": "/Ace_freelance/static/js/main.8a3f79b2.js",
     "static/media/coming.gif": "/Ace_freelance/static/media/coming.2a0ddb71246d43ed6de4.gif",
     "static/media/Graphic.png": "/Ace_freelance/static/media/Graphic.b6ae334f38e36a6254dc.png",
     "static/media/IKEA.png": "/Ace_freelance/static/media/IKEA.4291c2098ab54ede605b.png",
@@ -22,11 +22,11 @@
     "static/media/21.png": "/Ace_freelance/static/media/21.4a73ca1caf64d64e55d5.png",
     "static/media/Ai.png": "/Ace_freelance/static/media/Ai.497fdc0eeff99abb4584.png",
     "index.html": "/Ace_freelance/index.html",
-    "main.8a814c61.css.map": "/Ace_freelance/static/css/main.8a814c61.css.map",
-    "main.f066a700.js.map": "/Ace_freelance/static/js/main.f066a700.js.map"
+    "main.96ae3b0d.css.map": "/Ace_freelance/static/css/main.96ae3b0d.css.map",
+    "main.8a3f79b2.js.map": "/Ace_freelance/static/js/main.8a3f79b2.js.map"
   },
   "entrypoints": [
-    "static/css/main.8a814c61.css",
-    "static/js/main.f066a700.js"
+    "static/css/main.96ae3b0d.css",
+    "static/js/main.8a3f79b2.js"
   ]
 }
