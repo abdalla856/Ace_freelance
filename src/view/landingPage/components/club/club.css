@@ -1,0 +1,57 @@
+.club {
+  background-color: #3444da;
+  font-family: "Lato", sans-serif;
+}
+
+.club_section {
+  display: flex;
+
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: white;
+  padding: 20px;
+  flex-direction: column;
+  /* flex-direction: row-reverse; */
+  /* align-items: flex-end; */
+}
+
+.club_info h2 {
+  font-size: 50px;
+  width:70%;
+  line-height: 70px;
+
+}
+.club_info div {
+  font-size: 25px;
+}
+
+.club_right_side {
+  width: 100%;
+}
+.club_right_side img {
+  float: right;
+  width: 300px;
+  height: 300px;
+}
+
+.club_email {
+  background-color: transparent;
+  color: white;
+  border-color: white;
+  height: 40px;
+  width:40%;
+  margin-top: 10px;
+}
+.club_email ::placeholder {
+  color: white;
+}
+.club_btn {
+  margin-left: -80px;
+  height: 30px;
+  width: 70px;
+  color: black;
+  background-color: white;
+  border-color: white;
+  border-radius: 25px;
+  font-family: Lato;
+}

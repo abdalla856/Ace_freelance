@@ -1,0 +1,110 @@
+
+.main_text {
+  margin-top: 100px;
+  color: black;
+  padding-top: 30px;
+}
+.main_text .vision {
+  font-size: 57px;
+  text-transform: capitalize;
+  font-weight: bolder;
+  margin-bottom: 40px;
+}
+
+.main_text .services {
+  font-size: 21px;
+  margin-bottom: 20px;
+  font-family: " Montserrat", sans-serif;
+  text-transform: capitalize;
+}
+
+.main_text .estimate {
+  background-color: black;
+  color: white;
+  font-size: 24px;
+  border-radius: 35px;
+  padding: 10px 15px;
+  width: 240px;
+  margin-bottom: 20px;
+  border: none;
+}
+.estimate:hover {
+  cursor: pointer;
+}
+
+.myswiper {
+  width: 100% !important;
+  height: 150px !important;
+  /* margin: 7vh 0px; */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  z-index: 0[x];
+}
+
+.mySwiper-slider {
+  text-align: center;
+  font-size: 18px;
+  height: 100px !important;
+  /* background: rgb(27, 8, 8); */
+  color: white;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.mySwiper-slider img {
+  display: flex;
+  width: 90%;
+  height: auto;
+}
+.product_example {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.swiper-wrapper {
+  transition-timing-function: linear;
+}
+.card_example {
+  width: 24%;
+}
+.card_example img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  -webkit-transition: border-radius 1s;
+  transition: border-radius 1s;
+}
+.card_example img:hover {
+  border-radius: 80%;
+  transition: border-radius 0.7s linear;
+}
+
+.card_example .text {
+  font-size: 14px;
+  height: 35px;
+}
+
+.card_example .categorey {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+@media (max-width: 991px) {
+  .card_example {
+    width: 45%;
+    margin-bottom: 30px;
+  }
+}
