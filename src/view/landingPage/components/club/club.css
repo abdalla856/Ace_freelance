@@ -1,6 +1,7 @@
 .club {
   background-color: #3444da;
   font-family: "Lato", sans-serif;
+  padding: 50px;
 }
 
 .club_section {
@@ -17,9 +18,8 @@
 
 .club_info h2 {
   font-size: 50px;
-  width:70%;
+  width: 70%;
   line-height: 70px;
-
 }
 .club_info div {
   font-size: 25px;
@@ -27,6 +27,7 @@
 
 .club_right_side {
   width: 100%;
+  /* margin-bottom: 200px; */
 }
 .club_right_side img {
   float: right;
@@ -39,11 +40,18 @@
   color: white;
   border-color: white;
   height: 40px;
-  width:60%;
+  width: 60%;
   margin-top: 10px;
+  border-radius: 25px;
+
+  text-indent: 20px
 }
 .club_email::placeholder {
   color: white;
+  
+}
+.club_email:focus {
+  outline: white !important;
 }
 .club_btn {
   margin-left: -80px;
@@ -51,7 +59,14 @@
   width: 70px;
   color: black;
   background-color: white;
-  border-color: white;
+  border-color: transparent;
   border-radius: 25px;
-  font-family: Lato;
+}
+.club_btn:hover{
+cursor: pointer;
+color: white;
+border-color: black;
+background-color: transparent;
+transition: all 0.5s ease-out;
+
 }

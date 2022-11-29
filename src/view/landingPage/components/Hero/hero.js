@@ -110,7 +110,7 @@ const Herosection = () => {
             />
             <div className="text">SEO OPTIMIZATION OF KHATR sdn bhd.</div>
             <hr />
-            <div className="categorey">STRATEGy, MARKETING, & MAINTENANCE</div>
+            <div className="categorey_last">STRATEGy, MARKETING, & MAINTENANCE</div>
           </div>
         </div>
       </div>

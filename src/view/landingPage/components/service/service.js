@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import "./service.css";
-import FadeInSection from "../../../../shared/fade";
+
 import useOnScreen from "../../../../shared/intersection";
 import { useInView } from "react-intersection-observer";
 const Service = () => {
-  const [bot, setBot] = useState("10%");
-
-  const [bottom, setBottom] = useState(0);
-  const [top, setTop] = useState(0);
+  const [bot, setBot] = useState("0%");
+  const [trans, setTrans] = useState(false);
+  const [bottom, setBottom] = useState();
+  const [top, setTop] = useState();
   const [fix, setFix] = useState(false);
-  const [listHeight, setListHeight] = useState(0);
   const web = React.useRef();
   const inView = useOnScreen(web);
   const graphic = React.useRef();
@@ -17,135 +16,141 @@ const Service = () => {
   const mech = React.useRef();
   const inView4 = useOnScreen(mech);
   const markting = React.useRef();
-  const inView2 = useOnScreen(markting)
-
-  // const { web, inView, entry } = useInView({
-  //   /* Optional options */
-  //   threshold: 0.2,
-  // });
+  const inView2 = useOnScreen(markting);
 
   const ref = React.useRef();
-  const ref1 = React.useRef();
-  const ref_list = React.useRef();
+
   const changeBackground = () => {
-    // console.log(window.scrollY);
-    if (bottom - 650 >= window.scrollY && window.scrollY >= top-10) {
+    if (bottom -700>= window.scrollY && window.scrollY >= top) {
       setFix(true);
-      console.log("hi");
+
     } else {
       setFix(false);
     }
-    if (bottom - 650 <= window.scrollY){
-      setBot("75%")
-    }else if (window.scrollY <= top){
-      setBot("4%");
-      
+    if (bottom -700<= window.scrollY && fix) {
+      setBot("75%");
+      setTrans(false)
+   
+
+
+    } else if (window.scrollY <= top && !(bottom -250<= window.scrollY)&& fix) {
+      setBot("0%");
+
+    }
+     if((bottom <= window.scrollY)){
+      setTrans(false)
+      console.log(bottom)
+      console.log(window.scrollY)
+
+
+    }else if(window.scrollY >= top && !(bottom -2000<= window.scrollY) ){
+      setTrans(true)
+
     }
 
   };
 
   React.useEffect(() => {
-    setBottom(ref.current.offsetTop + ref.current.offsetHeight);
-    setTop(ref.current.offsetTop);
-    setListHeight(ref_list.current.offsetHeight * 6);
-  }, [ref, ref_list]);
+    window.addEventListener("scroll", () => {
+      if (ref.current.offsetTop > window.scrollY && window.scrollY > 600) {
+        const top2 = ref.current.getBoundingClientRect().top + window.scrollY;
+        setTop(top2);
+
+      } else if (ref.current.offsetTop < window.scrollY) {
+        // setTop(  window.scrollY-ref.current.offsetTop);
+        // console.log(ref.current.offsetTop);
+        // console.log(window.scrollY);
+      }
+      setBottom(ref.current.offsetHeight + top);
+      
+    });
+  });
 
   React.useEffect(() => {
     changeBackground();
-    console.log(listHeight);
 
     window.addEventListener("scroll", changeBackground);
+
   });
 
   return (
-    <div className="service" ref={ref1}>
+    <div className="service" ref={ref}>
       <div className="container">
-        <FadeInSection>
-          <h2 className={`Serve  is-visible `}>Our Service</h2>
-        </FadeInSection>
+        {/* <FadeInSection> */}
+          <h2 className={`Serve`}>Our Services</h2>
+        {/* </FadeInSection> */}
         <div className="service_container">
-          <div
-            className="left_side"
-    
-          >
+          <div className="left_side">
             <ul
               className={`service_cat`}
               style={{
                 position: fix ? "fixed" : "relative",
-                top: fix ? "20%" : bot,
-                bottom: fix ? "100%" : "100%",
+                top: fix ? "30%" : bot,
+                transition: trans ? "top 1s linear" : "none",
               }}
             >
-              <li ref={ref_list}>
+              <li>
                 <div style={{ display: "flex" }}>
-                  {/* {console.log(isVisible)} */}
-                  <sup>01</sup>{" "}
                   <p className={`web ${inView ? "active" : ""}`}>
+                    <sup className={`web ${inView ? "active" : ""}`}>01</sup>
                     Website Development{" "}
                   </p>
                 </div>
               </li>
               <li>
-                <div
-                  style={{ display: "flex" }}
-                  >
-                  <sup>02</sup>
-                  <p
-                  className={`strategy ${inView2 ? "active" : ""}`}
-                  
-                  > Strategy, Matkting&Maintenace</p>
+                <div style={{ display: "flex" }}>
+                  <p className={`strategy ${inView2 ? "active" : ""}`}>
+                    <sup className={`web ${inView2 ? "active" : ""}`}>02</sup>
+                    Strategy, Markting&Maintenance
+                  </p>
                 </div>
               </li>
               <li>
-                <div
-                  style={{ display: "flex" }}
-                  >
-                  <sup>03</sup>
-                  <p
-                  className={`web ${inView3 ? "active" : ""}`}
-                  >Graphic Design</p>
+                <div style={{ display: "flex" }}>
+                  <p className={`web ${inView3 ? "active" : ""}`}>
+                    <sup className={`web ${inView3 ? "active" : ""}`}>03</sup>
+                    Graphic Design
+                  </p>
                 </div>
               </li>
               <li>
-                <div
-                  style={{ display: "flex" }}
-                
-                >
-                  <sup>04</sup>
-                  <p
-                  className={`web ${inView4 ? "active" : ""}`}
-                  
-                  > Mchanical Design</p>
+                <div style={{ display: "flex" }}>
+                  <p className={`web ${inView4 ? "active" : ""}`}>
+                    <sup className={`web ${inView4 ? "active" : ""}`}>04</sup>
+                    Mechanical Design
+                  </p>
                 </div>
               </li>
             </ul>
           </div>
-          <div className="right_side" ref={ref}>
+          <div className="right_side">
             {/* {console.log(isVisible)} */}
-            <FadeInSection>
-              <div
-                className={`web`}
-                // style={{ display: !inView1 ? "none" : "" }}
-                ref={web}
-              >
-                <ul>
-                  <li>UX</li>
-                  <li>Corporate Website</li>
-                  <li>E-Commerce</li>
-                  <li>Landing Page</li>
-                  <li>E-Portfolio/CV</li>
-                  <li>Landing Wordpress</li>
-                </ul>
-                <p>
-                  From one-page site to complex admin panels, we are ready to
-                  create your own website using the latest technologies. Fast
-                  page load speed, responsive, user-friendly and eye-catching
-                  are our main criterias to tailor your website for your target
-                  audience.
-                </p>
-                <a href="#web">learn more</a>
-              </div>
-            </FadeInSection>
+
+            <div
+              className={`web`}
+              id="web"
+              // style={{ display: !inView1 ? "none" : "" }}
+              // style={{opacity :"0"}}
+
+              ref={web}
+            >
+              <ul>
+                <li>UX</li>
+                <li>Corporate Website</li>
+                <li>E-Commerce</li>
+                <li>Landing Page</li>
+                <li>E-Portfolio/CV</li>
+                <li>Landing Wordpress</li>
+              </ul>
+              <p>
+                From one-page site to complex admin panels, we are ready to
+                create your own website using the latest technologies. Fast page
+                load speed, responsive, user-friendly and eye-catching are our
+                main criterias to tailor your website for your target audience.
+              </p>
+              <a href="#web">learn more</a>
+            </div>
+
             <div
               className="markting"
               ref={markting}
@@ -172,7 +177,6 @@ const Service = () => {
               className="graphic"
               // style={{ display: !isGraphic ? "none" : "" }}
               ref={graphic}
-
             >
               <ul>
                 <li>Flyer</li>
@@ -196,7 +200,6 @@ const Service = () => {
               className="mech"
               // style={{ display: !isMech ? "none" : "" }}
               ref={mech}
-
             >
               <ul>
                 <li>SOLIDWORKS</li>

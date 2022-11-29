@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { FaBars } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 const Navbar = () => {
   const [isDarkMode, setDarkMode] = React.useState(false);
@@ -40,7 +41,9 @@ const Navbar = () => {
         />
         <ul className="tabs">
           <li>
-            <a href="#service">Serivce</a>
+            <a href="/admin_dash">
+              
+              Serivce</a>
           </li>
           <li>
             <a href="#about">About</a>

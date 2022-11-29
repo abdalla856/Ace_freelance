@@ -56,7 +56,7 @@ const Contact = () => {
                 <h3>Services</h3>
               </li>
               <li>Website Development</li>
-              <li>Strategy, Marketing, and Maintenance</li>
+              <li>Strategy, Marketing, & Maintenance</li>
               <li>Graphic Design</li>
               <li>Mechanical Design</li>
             </ul>

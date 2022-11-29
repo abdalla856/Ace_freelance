@@ -16,6 +16,9 @@ const Blog = () => {
               alt="blog iamge"
             />
           </div>
+          <div className="right_side_card">
+
+          
           <div className="blog_category">
             <div className="blog_cat">Mechincal Design</div>
             <div className="mins">8 min to read</div>
@@ -38,6 +41,7 @@ const Blog = () => {
             <div className="desc">
               <div className="name">Abdelrahman Zaian</div>
               <div className="date">20 April 2022</div>
+            </div>
             </div>
           </div>
         </div>

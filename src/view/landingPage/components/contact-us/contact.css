@@ -17,8 +17,13 @@
   cursor: pointer;
   margin: 30px 0;
   border: 0;
+  border: 2px solid transparent;
 }
-
+.lets_talk_btn:hover {
+  background-color: white;
+  color: blue;
+  border: 2px solid blue;
+}
 .mainContact {
   display: flex;
   justify-content: space-between;
@@ -29,11 +34,11 @@
   align-items: center;
   margin-top: 20px;
 }
-@media (max-width:991px) {
+@media (max-width: 991px) {
   .mainContact {
     flex-direction: column;
   }
-  .leftContact{
+  .leftContact {
     margin-bottom: 20px;
   }
   .lets_talk {
@@ -66,6 +71,9 @@
 .rightContact ul li {
   padding: 5px;
   font-size: 20px;
+}
+.rightContact ul li:hover {
+  text-decoration: underline;
 }
 
 .rightContact ul li h3 {
@@ -107,21 +115,28 @@
   margin-top: 10px;
 }
 .contct_btn {
-  margin-left: -80px;
+  margin-left: -85px;
   height: 30px;
-  width: 70px;
+  width: 80px;
   color: black;
   background-color: white;
   border-color: transparent;
   border-radius: 25px;
   font-family: Lato;
+  text-align: center;
+  border: 2px solid white;
 }
 .contct_btn:hover {
+  /* margin-left: -85px; */
+
   cursor: pointer;
+  border: 2px solid black;
+  width: 80px;
 }
 
 .footer {
   margin-top: 20px;
+  width: 88.5%;
   display: flex;
   justify-content: space-between;
 }

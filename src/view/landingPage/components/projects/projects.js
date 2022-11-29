@@ -20,6 +20,7 @@ const Project = () => {
             <li>Mechanical Design</li>
           </ul>
  
+<div className="swipe_pro">
 
           <Swiper
             slidesPerView={2}
@@ -29,9 +30,7 @@ const Project = () => {
               disableOnInteraction: false,
             }}
             centeredSlides={true}
-            pagination={{
-              clickable: true,
-            }}
+          
             effect={"coverflow"}
             coverflowEffect={{
               rotate: 50,
@@ -40,7 +39,7 @@ const Project = () => {
               modifier: 1,
               slideShadows: true,
             }}
-            modules={[Pagination, Autoplay, EffectCoverflow]}
+            modules={[ Autoplay, ]}
             className="mySwiper"
           >
             <SwiperSlide className="swipr_project">
@@ -65,7 +64,8 @@ const Project = () => {
               <img
                 src={require("../../../../assets/imgs/products/web.png")}
                 alt=""
-              />
+                />
+                
             </SwiperSlide>
             <SwiperSlide className="swipr_project">Slide 5</SwiperSlide>
             <SwiperSlide className="swipr_project">Slide 6</SwiperSlide>
@@ -73,6 +73,7 @@ const Project = () => {
             <SwiperSlide className="swipr_project">Slide 8</SwiperSlide>
             <SwiperSlide className="swipr_project">Slide 9</SwiperSlide>
           </Swiper>
+</div>
       </div>
     </div>
   );
