@@ -25,8 +25,6 @@ ChartJS.register(
 ChartJS.defaults.color = "white";
 
 
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
 
 
 const LineCart =({linedata , label =""})=>{

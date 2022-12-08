@@ -2,7 +2,7 @@ import React from "react";
 import "./maindash.css";
 import DougnutChar from "../../../../../shared/doughnutchart/doughnut";
 import LineCart from "../../../../../shared/linechart/line";
-import  {BarChar}  from "../../../../../shared/barchart/bar";
+import { BarChar } from "../../../../../shared/barchart/bar";
 import { faker } from "@faker-js/faker";
 
 const projects_data = {
@@ -61,27 +61,42 @@ const order_chart_month_data = {
     },
   ],
 };
-const labels = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-  ];
+const labels = ["January", "February", "March", "April", "May", "June", "July"];
 
-  const bardata = {
-    labels,
-    datasets: [
-  
-      {
-        label: "income in RM",
-        data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
-      },
-    ],
-  };
+const bardata = {
+  labels,
+  datasets: [
+    {
+      label: "income in RM",
+      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+      backgroundColor: "rgba(53, 162, 235, 0.5)",
+    },
+  ],
+};
+const ageslabels = ["<18", "18-24", "25-30", "30<"];
+const agedata = {
+  labels: ageslabels,
+  datasets: [
+    {
+      label: "ages per yaer",
+      data: ageslabels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+      backgroundColor: "rgba(53, 162, 235, 0.5)",
+    },
+  ],
+};
+const countrieslabels = ["Egypt", "Yemen", "Sirya", "Palasine", "Sudia Arbia"];
+const Countriesdata = {
+  labels: countrieslabels,
+  datasets: [
+    {
+      label: "top users",
+      data: countrieslabels.map(() =>
+        faker.datatype.number({ min: 0, max: 1000 })
+      ),
+      backgroundColor: "rgba(53, 162, 235, 0.5)",
+    },
+  ],
+};
 const MainDash = () => {
   return (
     <>
@@ -92,8 +107,15 @@ const MainDash = () => {
           <LineCart linedata={order_month_data} label="Orders per month" />
         </div>
         <div className="main_dash_charts">
-        <BarChar data = {bardata} label ="Income per Month"/>
-          <LineCart linedata={order_chart_month_data} label="order vs in chart per month" />
+          <BarChar data={bardata} label="Income per Month" />
+          <LineCart
+            linedata={order_chart_month_data}
+            label="order vs in chart per month"
+          />
+        </div>
+        <div className="main_dash_charts">
+          <BarChar data={agedata} label="User Ages" />
+          <BarChar data={Countriesdata} label="Top Five Countries" />
         </div>
       </div>
     </>

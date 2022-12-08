@@ -1,7 +1,7 @@
 import React from "react";
 import "./dashNav.css";
 import Moment from "moment";
-const DashNnav = () => {
+const DashNnav = ({activeUse = 5 }) => {
   return (
     <>
       <div className="dash-nav">
@@ -12,8 +12,8 @@ const DashNnav = () => {
           </div>
           {/* //red */}
           <div className="dash-nav-card" style={{backgroundColor:"red"}}>
-            <p>Users</p>
-            <div>5</div>
+            <p>ِActive Users</p>
+            <div>{activeUse}</div>
           </div>
           {/* blue */}
           <div className="dash-nav-card" style={{backgroundColor:"blue"}}>

@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
-import { FaBars } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+
+
 import "./Navbar.css";
 const Navbar = () => {
   const [isDarkMode, setDarkMode] = React.useState(false);
   const [isArabic, setArabic] = React.useState(false);
-  const [isNavExpanded, setIsNavExpanded] = useState(false);
-  const [iswhite, setwhite] = useState(false);
+
   const toggleDarkMode = (checked) => {
     setDarkMode(checked);
   };
@@ -17,20 +16,9 @@ const Navbar = () => {
     setArabic((current) => !current);
     console.log(isArabic);
   };
-  const changeBackground = () => {
-    // console.log(window.scrollY);
-    if (window.scrollY >= 530) {
-      setwhite(true);
-    } else {
-      setwhite(false);
-    }
-  };
 
-  useEffect(() => {
-    changeBackground();
-    // adding the event when scroll change background
-    window.addEventListener("scroll", changeBackground);
-  });
+
+
   return (
     <div className="navbar" style={{ backgroundColor: "white" }}>
       <div className="container">

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import useOnScreen from "../../../../shared/intersesction/intersection";
 import "./service.css";
 
-import useOnScreen from "../../../../shared/intersection";
-import { useInView } from "react-intersection-observer";
+
 const Service = () => {
   const [bot, setBot] = useState("0%");
   const [trans, setTrans] = useState(false);

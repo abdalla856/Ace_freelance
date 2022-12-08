@@ -1,0 +1,16 @@
+.admin_users{
+
+    background-color: #282c34;
+    min-height: 100vh;
+
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+.main_dash_comp{
+    display: flex;
+    flex-direction: row;
+}
+.users_for_admin{
+    margin-top:20px ;
+    margin-left:20px ;
+}

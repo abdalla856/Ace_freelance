@@ -4,8 +4,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/pagination";
-import { Pagination, Autoplay, EffectCoverflow } from "swiper";
+
+import {  Autoplay } from "swiper";
 // import "./styles.css";
 const Project = () => {
   return (

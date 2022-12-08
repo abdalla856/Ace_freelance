@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Grid } from "@mui/material";
 import "./about.css";
-import FadeInSection from "../../../../shared/fade";
+import FadeInSection from "../../../../shared/fade/fade";
 const About = () => {
   return (
     <div className="about" id="about">

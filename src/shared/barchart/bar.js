@@ -33,9 +33,7 @@ export function BarChar({data , label = ""} ) {
       legend: {
         position: "top",
       },
-      title: {
-        display: true,
-      },
+
       title: {
         display: true,
         text: label,

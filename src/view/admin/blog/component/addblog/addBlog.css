@@ -1,0 +1,54 @@
+.dash_addblog {
+  background-color: #282c34;
+  min-height: 100vh;
+
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.main_dash_comp {
+  display: flex;
+  flex-direction: row;
+}
+.font-weight-bold {
+  font-weight: bold;
+  font-size: calc(20px + 2vmin);
+}
+.title_input {
+  width: 50%;
+  height: 40px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+.editor_section {
+  background-color: white;
+  color: black;
+}
+.preview {
+  background-color: white;
+  color: black;
+  min-height: 20px;
+  margin-top: 10px;
+}
+.add_section_all {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.code_source {
+  margin-top: 20px;
+}
+.previewSection {
+  margin-top: 20px;
+}
+.submit_blog_btn button {
+  float: right;
+  margin-top: 20px;
+  width: 100px;
+  height: 40px;
+  font-weight: 200;
+  font-size: 20px;
+  border-radius: 7px;
+  border-color: white;
+  background-color: rgb(57, 192, 57);
+  color: white;
+}

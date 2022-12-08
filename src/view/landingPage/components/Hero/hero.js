@@ -1,7 +1,7 @@
 import React from "react";
 import "./hero.css";
 
-import FadeInSection from "../../../../shared/fade";
+import FadeInSection from "../../../../shared/fade/fade";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
