@@ -1,6 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
-
 
 import "./Navbar.css";
 const Navbar = () => {
@@ -17,8 +17,6 @@ const Navbar = () => {
     console.log(isArabic);
   };
 
-
-
   return (
     <div className="navbar" style={{ backgroundColor: "white" }}>
       <div className="container">
@@ -29,9 +27,7 @@ const Navbar = () => {
         />
         <ul className="tabs">
           <li>
-            <a href="/admin_dash">
-              
-              Serivce</a>
+            <a href="/admin_dash">Serivce</a>
           </li>
           <li>
             <a href="#about">About</a>
@@ -79,7 +75,7 @@ const Navbar = () => {
             </div>
           </li>
           <li>
-            <input className="btn2" type="button" value="Sign in" />
+            <Link className="btn2" to="/signin">Sign in</Link>
           </li>
         </ul>
       </div>
