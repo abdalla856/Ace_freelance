@@ -7,24 +7,32 @@ import GraphicSection from "./components/graphic_section/graphic";
 import WebSection from "./components/web_section/web";
 import MechSection from "./components/mech_section/mech";
 import MarketingSection from "./components/marketing_section/market";
-
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { AllActiveUserts } from "../../../actions/users";
+import { getAllDataNumbers } from "../../../actions/blogActions";
+
+
+
+
+
+
+
+
 const Dashboard = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(AllActiveUserts());
+    dispatch(getAllDataNumbers());
   }, [ dispatch]);
   const users = useSelector((state) => state.Users);
-  console.log(users.length)
+  const blogs = useSelector((state) => state.Blogs);
+  console.log(blogs.length)
   return (
     <>
       <div className="dashboard" id="dash">
         <div className="main_dash_comp">
           <SideBar />
           <div className="container" id="main">
-            <DashNnav activeUse={users.length}/>
+            <DashNnav activeUse={users.length} blogs={blogs.length}/>
             <MainDash  />
             <GraphicSection />
             <WebSection />

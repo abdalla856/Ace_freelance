@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./blogList.css";
 import Moment from "moment";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getAllBlogs,
+  deleteblogbyId,
+} from "../../../../../actions/blogActions";
 const BlogList = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllBlogs());
+  }, [dispatch]);
+
+  const blogs = useSelector((state) => state.Blogs);
+
+
+
+  function deleteBlogHandler(id) {
+    // const _id ={"id":id}
+    dispatch(deleteblogbyId(id ));
+  }
+
   return (
     <>
       <div className="bloglist">
@@ -14,18 +33,31 @@ const BlogList = () => {
             <th>Views</th>
             <th>Action</th>
           </tr>
-          <tr>
-            <td>G.O.A.T For Everything</td>
-            <td>{Moment(Date.now()).format("DD/MM/yy hh:mm")}</td>
-            <td>{Moment(Date.now()).format("DD/MM/yy hh:mm")}</td>
-            <td>10</td>
-            <td className="action_btns">
-              <button style={{ backgroundColor: "green" }}>Edit</button>
-              <button style={{ backgroundColor: "red" }}>Delete</button>
-            </td>
-          </tr>
-          <Link to='/add_blog'>
-          <button className="add_man">Add New Blog</button>
+          {blogs.map((blog) => (
+            <tr key={blog.id}>
+              <td>{blog.title}</td>
+              <td>{Moment(blog.createdAt).format("DD/MM/yy hh:mm A")}</td>
+              <td>{Moment(blog.updatedAt).format("DD/MM/yy hh:mm A")}</td>
+              <td>{blog.reviews}</td>
+              <td className="action_btns">
+                <Link to={`/update_blog/${blog._id}`} >
+
+
+                <button
+                  style={{ backgroundColor: "green" }}
+                  
+                >
+                  Edit
+                </button>
+                </Link>
+                <button style={{ backgroundColor: "red" }}
+                onClick={()=>deleteBlogHandler(blog._id)}
+                >Delete</button>
+              </td>
+            </tr>
+          ))}
+          <Link to="/add_blog">
+            <button className="add_man">Add New Blog</button>
           </Link>
         </table>
       </div>

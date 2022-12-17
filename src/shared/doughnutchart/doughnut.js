@@ -8,6 +8,7 @@ ChartJS.defaults.color = "white";
 const DougnutChar = ({ data, labels = "no" }) => {
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "top",

@@ -29,6 +29,7 @@ export function BarChar({data , label = ""} ) {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "top",

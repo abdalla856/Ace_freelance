@@ -9,7 +9,7 @@ const Finance = () => {
       <div className="dash_finance" id="dash">
         <div className="main_dash_comp">
         <SideBar />
-        <div className="container" id="main">
+        <div className="container" id="main" >
           <h1>Finance </h1>
           <PayementTable />
         </div>

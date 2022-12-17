@@ -30,6 +30,7 @@ ChartJS.defaults.color = "white";
 const LineCart =({linedata , label =""})=>{
   const options = {
     responsive: true,
+    // maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top' ,

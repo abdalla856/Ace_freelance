@@ -11,7 +11,7 @@
 }
 .font-weight-bold {
   font-weight: bold;
-  font-size: calc(20px + 2vmin);
+  font-size: calc(15px + 2vmin);
 }
 .title_input {
   width: 50%;
@@ -40,7 +40,7 @@
 .previewSection {
   margin-top: 20px;
 }
-.submit_blog_btn button {
+.submit_blog_btn .button {
   float: right;
   margin-top: 20px;
   width: 100px;
@@ -51,4 +51,14 @@
   border-color: white;
   background-color: rgb(57, 192, 57);
   color: white;
+}
+.criteri_list{
+  width: 50%;
+  height: 30px;
+  border-radius: 10px;
+}
+.add_section input{
+  /* padding-left: 10px; */
+  text-indent: 10px
+
 }
