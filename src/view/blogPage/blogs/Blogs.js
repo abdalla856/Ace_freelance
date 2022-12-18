@@ -28,11 +28,14 @@ const Blogs = () => {
 
         <div className="blogContent">
           <div className="firstBox">
-            <img
-              className="blogImg"
-              src={require("../../../assets/imgs/blog1.png")}
-              alt=""
-            />
+            <div className="imageBox">
+              <img
+                className="blogImg"
+                src={require("../../../assets/imgs/blog1.png")}
+                alt=""
+              />
+            </div>
+
             <div className="blogText">
               <div className="info">
                 <span>Freelancing</span>
@@ -169,7 +172,7 @@ const Blogs = () => {
               <div className="thirdBlog">
                 <img src={require("../../../assets/imgs/blog6.png")} alt="" />
                 <div className="info">
-                  <span >Technology</span>
+                  <span>Technology</span>
                   <span>8 min to read</span>
                 </div>
                 <h3>WHY SOLIDWORKS IS THE G.O.A.T.</h3>
@@ -189,7 +192,7 @@ const Blogs = () => {
               <div className="thirdBlog">
                 <img src={require("../../../assets/imgs/blog7.png")} alt="" />
                 <div className="info">
-                  <span >Technology</span>
+                  <span>Technology</span>
                   <span>8 min to read</span>
                 </div>
                 <h3>WHY SOLIDWORKS IS THE G.O.A.T.</h3>

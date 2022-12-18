@@ -1,0 +1,264 @@
+.single-blog {
+  padding: 120px 0;
+}
+
+.single-blog .info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+.single-blog .info .info-one {
+  color: white;
+  font-weight: 900;
+  font-size: 24px;
+  background: #3444da;
+  padding: 10px 20px;
+  border-radius: 35px;
+}
+.single-blog .info .info-two {
+  color: white;
+  font-weight: 900;
+  font-size: 24px;
+  background: #784adb;
+  padding: 10px 20px;
+  border-radius: 35px;
+  margin: 0 10px;
+}
+
+.single-blog .blog-title {
+  font-weight: 800;
+  font-size: 90px;
+}
+
+.single-blog p {
+  margin: 20px 0;
+  font-size: 30px;
+  line-height: 1.5;
+}
+
+.single-blog .creator {
+  margin: 30px 0;
+}
+
+.single-blog .creator .avtar_blog {
+  margin-right: 20px;
+}
+
+.single-blog .creator img {
+  width: 50px;
+  height: 50px;
+}
+
+.single-blog .creator .desc .name {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.single-blog .image-box {
+  width: 100%;
+  margin: 40px 0;
+}
+
+.single-blog .image-box img {
+  width: 100%;
+}
+
+.single-blog .image-box p:first-of-type {
+  margin-top: 10px;
+  margin-bottom: 45px;
+}
+
+.single-blog .heading {
+  font-weight: 800;
+  font-size: 70px;
+  text-transform: uppercase;
+  margin: 90px 0 55px;
+}
+
+.single-blog .second-part p:first-of-type,
+.third-part p:first-of-type {
+  margin-bottom: 45px;
+}
+
+.single-blog .keys {
+  margin: 40px 0;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgb(212, 212, 212);
+  border-bottom: 1px solid rgb(212, 212, 212);
+}
+
+.single-blog .keys .keywords {
+  display: flex;
+}
+.single-blog .keys .keywords span {
+  padding: 10px 20px;
+  color: white;
+  background-color: black;
+  border-radius: 35px;
+  font-size: 24px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.single-blog .keys .copy {
+  display: flex;
+  align-items: center;
+}
+
+.single-blog .keys .copy .copy-link {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: 1px solid #000000;
+  font-size: 30px;
+  font-weight: bold;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.single-blog .keys .copy .copy-link svg {
+  font-size: 40px;
+  margin-right: 10px;
+}
+
+.single-blog .keys .copy .boxs {
+  display: flex;
+}
+
+.single-blog .keys .copy .boxs span {
+  width: 45px;
+  height: 45px;
+  border: 1px solid #000000;
+  margin-right: 10px;
+  border-radius: 15px;
+}
+.single-blog .comment-section .type-comment {
+  display: flex;
+  align-items: center;
+  height: 130px;
+}
+.single-blog .comment-section input {
+  width: calc(100% - 150px);
+  height: 100%;
+  background-color: #f0f4f7;
+  font-size: 30px;
+  padding: 0 30px;
+  border-radius: 25px;
+  border: 0;
+  outline: 0;
+}
+
+.single-blog .comment-section input::placeholder {
+  font-size: 36px;
+  color: rgba(0, 0, 0, 0.4);
+}
+.single-blog .comment-section .type-comment span {
+  width: 150px;
+  height: 150px;
+  background-color: #5474ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  cursor: pointer;
+}
+.single-blog .comment-section .type-comment span svg {
+  font-size: 70px;
+  color: white;
+}
+
+.single-blog .comment-section .num-comments {
+  font-weight: 900;
+  font-size: 36px;
+  margin-top: 35px;
+}
+
+.single-blog .comment-section .comment {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.single-blog .comment-section .comment .comment-image {
+  width: 91px;
+  height: 91px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 40px;
+}
+.single-blog .comment-section .comment .text {
+  width: calc(100% - 131px);
+}
+.single-blog .comment-section .comment .text .info {
+  display: flex;
+  align-items: center;
+}
+.single-blog .comment-section .comment .text .info .name {
+  margin-right: 20px;
+  font-weight: 700;
+  font-size: 24px;
+}
+.single-blog .comment-section .comment .text .info .date {
+  font-size: 20px;
+}
+
+.single-blog .comment-section .comment .text .comment-text {
+  font-size: 25px;
+  margin: 0;
+  font-weight: 400;
+}
+.single-blog .comment-section .comment .replay {
+  margin-left: 125px;
+  display: flex;
+}
+
+.single-blog .comment-section .comment .replay .replay-icon {
+  width: 48px;
+  height: 35px;
+  margin-top: 30px;
+  margin-right: 30px;
+}
+
+.single-blog .comment-section .comment .replay .text {
+  width: (100% - 300px);
+}
+.single-blog .related-posts .heading {
+  border-bottom: 1px solid black;
+  width: fit-content;
+  font-size: 50px;
+}
+
+.single-blog .related-posts .posts {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.single-blog .related-posts .posts .post {
+  width: 32%;
+}
+
+.single-blog .related-posts .posts .post .img-post img {
+  width: 100%;
+}
+.single-blog .related-posts .posts .post .post_category {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.single-blog .related-posts .post_category .blog_cat,
+.single-blog .related-posts .post_category .date {
+  font-weight: 900;
+  font-size: 24px;
+  width: auto;
+  padding: 10px 20px;
+}
+
+.single-blog .related-posts .content_blog h3 {
+  font-weight: 700;
+  font-size: 28px;
+}

@@ -41,7 +41,7 @@ ul {
 
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    width: 1166px;
   }
 }
 
@@ -59,8 +59,9 @@ ul {
 
 @media (min-width:1920px) {
   .container {
-    width: 1900px;
+    width: 1880px;
   }
 }
+
 
 
