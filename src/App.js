@@ -9,6 +9,7 @@ import OrdersPage from "./view/admin/orders/orderPage";
 import BlogPage from "./view/blogPage/BlogPage";
 import SignIn from "./view/signin/signIn";
 import Signup from "./view/signup/signUp";
+import SingleBlog from "./view/blogPage/singleBlog/SingleBlog";
 function App() {
   return (
     <main>
@@ -21,6 +22,7 @@ function App() {
           <Route path="/user_admin" element={<UserAdmin />} />
           <Route path="/order_admin" element={<OrdersPage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:id" element={<SingleBlog />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Landing />} />

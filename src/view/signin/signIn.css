@@ -1,13 +1,14 @@
 .signIn {
 }
 .signIn .container {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 50px;
 }
 .signIn .loginLeft {
-  width: 50%;
+  width: 40%;
   position: relative;
 }
 
@@ -16,21 +17,6 @@
   min-width: 100%;
 }
 
-.signIn .loginLeft .login-gradient {
-  position: absolute;
-  top: 71px;
-  width: calc(100% - 124px);
-  left: 62px;
-  right: 62px;
-  height: calc(100% - 142px);
-  bottom: 71px;
-  background: url("../../assets/imgs/loginBg1.png") no-repeat;
-  padding: 20% 10%;
-}
-
-.signIn .loginLeft .login-gradient img {
-  width: 93px;
-}
 
 .signIn .loginRight {
   width: 40%;

@@ -1,7 +1,7 @@
 .club {
   background-color: #3444da;
   font-family: "Lato", sans-serif;
-  padding: 50px;
+  padding: 50px 0;
 }
 
 .club_section {
@@ -12,8 +12,7 @@
   color: white;
   padding: 20px;
   flex-direction: column;
-  /* flex-direction: row-reverse; */
-  /* align-items: flex-end; */
+
 }
 
 .club_info h2 {
@@ -27,7 +26,6 @@
 
 .club_right_side {
   width: 100%;
-  /* margin-bottom: 200px; */
 }
 .club_right_side img {
   float: right;

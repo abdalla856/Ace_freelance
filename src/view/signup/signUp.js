@@ -1,6 +1,5 @@
 import React from "react";
-import { AiFillStar } from "react-icons/ai";
-import { FaFacebook, FaFacebookF, FaGoogle } from "react-icons/fa";
+import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
@@ -13,36 +12,6 @@ const Signup = () => {
             src={require("../../assets/imgs/loginBg.png")}
             alt=""
           />
-
-          <div className="login-gradient">
-            <img
-              src={require("../../assets/imgs/logo.png")}
-              className="logo"
-              alt="logo For Ace company"
-            />
-            <h2>You are one click away from creating something awesome.</h2>
-            <p>
-              We produce projects that both ourselves and our clients can be
-              truly proud of.
-            </p>
-            <div className="icons">
-              <img
-                src={require("../../assets/imgs/shopee.png")}
-                className="logo"
-                alt="logo For Ace company"
-              />
-              <div className="text">
-                <p>As reviewed on SHOPEE</p>
-                <div className="stars">
-                  <AiFillStar />
-                  <AiFillStar />
-                  <AiFillStar />
-                  <AiFillStar />
-                  <AiFillStar />
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div className="loginRight">
