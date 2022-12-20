@@ -5,13 +5,14 @@
   top: 0;
   height: 100px;
   z-index: 100;
-  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 .navbar .container {
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .navbar .logo {
@@ -87,4 +88,49 @@
 
 .icon-men {
   display: none;
+}
+.navbar .user {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar .list-of-user {
+  display: none;
+  position: absolute;
+  top: calc(100% + 1px) ;
+  right: 0;
+  background: white;
+  padding: 20px;
+  width: 200px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+.navbar .tabs li .show-user {
+  display: block;
+}
+
+.navbar .list-of-user li {
+  font-size: 25px;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.navbar .list-of-user .logout {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .list-of-user .logout span{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
 }

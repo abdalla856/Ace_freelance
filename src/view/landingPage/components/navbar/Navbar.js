@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
-
+import { BiLogOut } from "react-icons/bi";
 import "./Navbar.css";
 const Navbar = () => {
   const [isDarkMode, setDarkMode] = React.useState(false);
   const [isArabic, setArabic] = React.useState(false);
-
+  const [isLoggedin, setLoggedin] = React.useState(true);
+  const [userMenu, setUserMenu] = React.useState(false);
+  console.log(userMenu);
   const toggleDarkMode = (checked) => {
     setDarkMode(checked);
   };
@@ -74,8 +76,30 @@ const Navbar = () => {
               />
             </div>
           </li>
-          <li>
-            <Link className="btn2" to="/signin">Sign in</Link>
+          <li onClick={() => setUserMenu(!userMenu)}>
+            {isLoggedin ? (
+              <>
+                <span className="user">H</span>
+                <ul
+                  className={
+                    userMenu ? "list-of-user show-user" : "list-of-user"
+                  }
+                >
+                  <li>profile</li>
+                  <li>Message</li>
+                  <li className="logout">
+                    <span>
+                      <BiLogOut />
+                    </span>
+                    Log out
+                  </li>
+                </ul>
+              </>
+            ) : (
+              <Link className="btn2" to="/signin">
+                Sign in
+              </Link>
+            )}
           </li>
         </ul>
       </div>
