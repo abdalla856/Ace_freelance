@@ -10,9 +10,25 @@ import BlogPage from "./view/blogPage/BlogPage";
 import SignIn from "./view/signin/signIn";
 import Signup from "./view/signup/signUp";
 import SingleBlog from "./view/blogPage/singleBlog/SingleBlog";
+import Cookies from "js-cookie";
+
 function App() {
-  return (
-    <main>
+  const storedData = JSON.parse(Cookies.get("user"));
+  console.log(storedData);
+  let routes;
+  if (storedData.token && storedData.type !== "admin") {
+    routes = (
+      <Router>
+        <Routes>
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:id" element={<SingleBlog />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="*" element={<Landing />} />
+        </Routes>
+      </Router>
+    );
+  } else if (storedData.token && storedData.type === "admin") {
+    routes = (
       <Router>
         <Routes>
           <Route path="/admin" element={<Dashboard />} />
@@ -23,14 +39,28 @@ function App() {
           <Route path="/order_admin" element={<OrdersPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:id" element={<SingleBlog />} />
+
+          <Route path="/" element={<Landing />} />
+          <Route path="*" element={<Landing />} />
+        </Routes>
+      </Router>
+    );
+  } else if (!storedData.token){
+    routes = (
+      <Router>
+        <Routes>
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:id" element={<SingleBlog />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Landing />} />
           <Route path="*" element={<Landing />} />
         </Routes>
       </Router>
-    </main>
-  );
+    );
+  }
+
+  return <main>{routes}</main>;
 }
 
 export default App;

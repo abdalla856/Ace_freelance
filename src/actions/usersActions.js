@@ -10,3 +10,16 @@ export const AllActiveUserts = () => async (dispatch) => {
     console.log(err);
   }
 };
+
+
+
+export const signUp =(user )=>async (dispatch) =>{
+  try {
+    let res  = await api.createUser(user);
+    return res.data
+
+    dispatch({type:"SIGNUP" , payload : res.data});
+  }catch (err){
+    console.log(err.message);
+  }
+}

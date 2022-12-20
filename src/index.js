@@ -5,15 +5,20 @@ import App from "./App";
 import { Provider } from "react-redux";
 import reducers from "./reducers";
 import thunk from "redux-thunk";
-import { composeWithDevTools } from 'redux-devtools-extension'
+import { composeWithDevTools } from "redux-devtools-extension";
 import { createStore, applyMiddleware } from "redux";
-
-const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
+import { CookiesProvider } from "react-cookie";
+const store = createStore(
+  reducers,
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+  <CookiesProvider>
     <Provider store={store}>
-      <App/>
-    </Provider>,
-
-  );
+      <App />
+    </Provider>
+    
+  </CookiesProvider>
+);

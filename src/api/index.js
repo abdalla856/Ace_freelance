@@ -2,7 +2,7 @@ import axios from "axios";
 
 const userURL = "http://localhost:5000/user";
 const blogURL = "http://localhost:5000/blog";
-const billURL ="http://localhost:5000/bill"
+const billURL = "http://localhost:5000/bill";
 
 // users api
 
@@ -11,6 +11,11 @@ export const getAllActioveUsers = () =>
     headers: {
       "Content-Type": "appplication/json",
     },
+  });
+
+export const createUser = (user) =>
+  axios.post(`${userURL}/signup`, user, {
+    headers: { "Content-Type": "application/json" },
   });
 
 //blog apis
@@ -49,25 +54,25 @@ export const updateBlog = (blog) =>
     headers: { "Content-Type": "application/json" },
   });
 
-
-
 /// bill apis
 
+export const getAllBills = () =>
+  axios.get(`${billURL}/all_bills`, {
+    headers: { "Content-Type": "application/json" },
+  });
 
+export const createBill = (billbody) =>
+  axios.post(
+    `${billURL}/add_new_bill`,
+    { billbody: billbody },
+    {
+      headers: { "Content-Type": "application/json" },
+    }
+  );
 
-export const getAllBills = () =>axios.get(`${billURL}/all_bills` , {
-  headers : {"Content-Type" : "application/json"}
-})
+export const deleteBill = (id) => axios.delete(`${billURL}/delete_bill/${id}`);
 
-
-export const createBill = (billbody) =>axios.post(`${billURL}/add_new_bill` , {billbody:billbody}, {
-  headers : {"Content-Type" : "application/json"}
-})
-
-
-export const deleteBill = (id) =>axios.delete(`${billURL}/delete_bill/${id}` )
-
-export const udapteBills = (bill) =>axios.put(`${billURL}/update_bill` ,bill, {
-  headers : {"Content-Type" : "application/json"}
-}
-)
+export const udapteBills = (bill) =>
+  axios.put(`${billURL}/update_bill`, bill, {
+    headers: { "Content-Type": "application/json" },
+  });
