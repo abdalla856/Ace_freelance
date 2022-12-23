@@ -13,8 +13,7 @@ import SingleBlog from "./view/blogPage/singleBlog/SingleBlog";
 import Cookies from "js-cookie";
 
 function App() {
-  const storedData = JSON.parse(Cookies.get("user"));
-  console.log(storedData);
+  const storedData = JSON.parse(Cookies.get("user") || "{}");
   let routes;
   if (storedData.token && storedData.type !== "admin") {
     routes = (
@@ -45,7 +44,7 @@ function App() {
         </Routes>
       </Router>
     );
-  } else if (!storedData.token){
+  } else if(storedData.token === undefined) {
     routes = (
       <Router>
         <Routes>

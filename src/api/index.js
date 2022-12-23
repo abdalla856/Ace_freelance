@@ -17,6 +17,26 @@ export const createUser = (user) =>
   axios.post(`${userURL}/signup`, user, {
     headers: { "Content-Type": "application/json" },
   });
+export const signUpGoogle = (accessToken) =>
+  axios.post(
+    `${userURL}/signup`,
+    {
+      googleAccessToken: accessToken,
+    }
+  );
+export const signUpFB = (accessToken , userId) =>
+  axios.post(
+    `${userURL}/signup`,
+    {
+     FBAccessToken: accessToken,
+     userID:userId
+    }
+  );
+
+export const signIn = (user) =>
+  axios.post(`${userURL}/login`, user, {
+    headers: { "Content-Type": "application/json" },
+  });
 
 //blog apis
 

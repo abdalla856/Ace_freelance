@@ -2,23 +2,27 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { BiLogOut } from "react-icons/bi";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 const Navbar = () => {
+  const navigate = useNavigate()
   const [isDarkMode, setDarkMode] = React.useState(false);
   const [isArabic, setArabic] = React.useState(false);
-  const [isLoggedin, setLoggedin] = React.useState(true);
   const [userMenu, setUserMenu] = React.useState(false);
-  console.log(userMenu);
   const toggleDarkMode = (checked) => {
     setDarkMode(checked);
   };
+  const storedData = JSON.parse(Cookies.get("user") || "{}");
 
   const handleClick = (event) => {
-    // 👇️ toggle isActive state variable
     setArabic((current) => !current);
-    console.log(isArabic);
   };
 
+  const logout = () => {
+    Cookies.remove("user");
+    navigate('/')
+  };
   return (
     <div className="navbar" style={{ backgroundColor: "white" }}>
       <div className="container">
@@ -77,17 +81,18 @@ const Navbar = () => {
             </div>
           </li>
           <li onClick={() => setUserMenu(!userMenu)}>
-            {isLoggedin ? (
+            {storedData.token ? (
               <>
-                <span className="user">H</span>
+                <span className="user">{storedData.name}</span>
                 <ul
                   className={
                     userMenu ? "list-of-user show-user" : "list-of-user"
                   }
                 >
                   <li>profile</li>
-                  <li>Message</li>
-                  <li className="logout">
+                  {storedData.type === "admin" ? <li>Admin</li> : ""}
+
+                  <li className="logout" onClick={logout}>
                     <span>
                       <BiLogOut />
                     </span>

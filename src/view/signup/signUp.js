@@ -4,9 +4,13 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signUp } from "../../actions/usersActions";
 import { useNavigate } from "react-router-dom";
+import { useGoogleLogin } from "@react-oauth/google";
 // import { useAuth } from "../../shared/hooks/auth-hooks";
 import { useCookies } from "react-cookie";
-import Cookies from "js-cookie";
+import { signupGoogle , signupFB } from "../../actions/usersActions";
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
+// import Cookies from "js-cookie";
+// import { GoogleLogin } from "react-google-login";
 import "./signUp.css";
 
 const Signup = () => {
@@ -31,7 +35,8 @@ const Signup = () => {
       [e.target.name]: value,
     });
   }
-
+  const clientId =
+    "42480938758-fgc9nrkkilk9qmi8p4qgesibrctk64ac.apps.googleusercontent.com";
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (new_user.password !== new_user.conf_pass) {
@@ -45,6 +50,7 @@ const Signup = () => {
             type: res.type,
             userId: res.id,
             token: res.token,
+            name: res.name,
           })
         );
         navigate("../");
@@ -54,6 +60,51 @@ const Signup = () => {
       }
     }
   };
+  const handleGoogleLoginSuccess = async (tokenResponse) => {
+    const accessToken = tokenResponse.access_token;
+    // alert(tokenResponse);
+
+    const res = await dispatch(signupGoogle(accessToken));
+    if (res.status === 202) {
+      setCookie(
+        "user",
+        JSON.stringify({
+          type: res.type,
+          userId: res.id,
+          token: res.token,
+          name: res.name,
+        })
+      );
+      navigate("../");
+      setMessage("");
+    } else {
+      setMessage(res.message);
+    }
+  };
+  const goolo_login = useGoogleLogin({
+    onSuccess: handleGoogleLoginSuccess,
+    // flow: "auth-code",
+    // onFailure : setMessage('Failed to Sign up please try again '),
+  });
+  const responseFacebook = async (response)=>{
+    console.log(response.userID)
+    const res = await dispatch(signupFB(response.accessToken , response.userID));
+    if (res.status === 202) {
+      setCookie(
+        "user",
+        JSON.stringify({
+          type: res.type,
+          userId: res.id,
+          token: res.token,
+          name: res.name,
+        })
+      );
+      navigate("../");
+      setMessage("");
+    } else {
+      setMessage(res.message);
+    }
+  }
 
   return (
     <div className="signIn">
@@ -135,16 +186,27 @@ const Signup = () => {
             Are you already a member? <Link to="/signin "> Sign In </Link>
           </p>
           <div className="signup-icons">
+            <span></span>
+
             <span>
-              <Link to="/">
+              <div onClick={goolo_login}>
                 <FaGoogle />
-              </Link>
+              </div>
             </span>
 
             <span>
-              <Link to="/">
-                <FaFacebookF />
-              </Link>
+        
+                <FacebookLogin
+                  appId="702527821576717"
+                  autoLoad
+                  callback={responseFacebook}
+                  render={(renderProps) => (
+                    <div onClick={renderProps.onClick}>
+                      <FaFacebookF />
+                    </div>
+                  )}
+                />
+         
             </span>
           </div>
         </div>
