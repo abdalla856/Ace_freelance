@@ -1,0 +1,62 @@
+.role {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.role form {
+  width: 50%;
+  padding: 30px;
+}
+
+@media (max-width: 767px) {
+  .role form {
+    width: 100%;
+  }
+}
+.role form select,
+.role form input {
+  width: 100%;
+  margin-bottom: 20px;
+  height: 50px;
+  padding: 0 20px;
+  font-size: 24px;
+}
+
+@media (max-width: 767px) {
+  .role form {
+    width: 100%;
+  }
+  .role form select option {
+    max-width: 100%;
+  }
+}
+.role form button {
+  display: block;
+  margin: auto;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  font-size: 24px;
+  border: 0;
+}
+
+.role form .warning,
+.role form .success {
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+}
+.role form .warning {
+  background-color: #ffc107;
+  color: black;
+
+}
+
+.role form .success {
+  background-color: #198754;
+  color: white;
+}

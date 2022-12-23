@@ -12,6 +12,7 @@ import Signup from "./view/signup/signUp";
 import SingleBlog from "./view/blogPage/singleBlog/SingleBlog";
 import Cookies from "js-cookie";
 
+import Role from "./view/role/Role";
 function App() {
   const storedData = JSON.parse(Cookies.get("user") || "{}");
   let routes;
@@ -52,6 +53,7 @@ function App() {
           <Route path="/blog/:id" element={<SingleBlog />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/role" element={<Role />} />
           <Route path="/" element={<Landing />} />
           <Route path="*" element={<Landing />} />
         </Routes>
