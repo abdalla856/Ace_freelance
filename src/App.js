@@ -11,6 +11,8 @@ import SignIn from "./view/signin/signIn";
 import Signup from "./view/signup/signUp";
 import SingleBlog from "./view/blogPage/singleBlog/SingleBlog";
 import Role from "./view/role/Role";
+import Products from "./view/productsPage/Products";
+import Product from "./view/productPage/Product";
 function App() {
   return (
     <main>
@@ -27,6 +29,8 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/role" element={<Role />} />
+          <Route path="/services/:service" element={<Products />} />
+          <Route path="/services/:service/:id" element={<Product />} />
           <Route path="/" element={<Landing />} />
           <Route path="*" element={<Landing />} />
         </Routes>
