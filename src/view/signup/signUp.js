@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { signUp } from "../../actions/usersActions";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
@@ -53,7 +53,9 @@ const Signup = () => {
             name: res.name,
           })
         );
-        navigate("../");
+        window.location.reload();
+
+
         setMessage("");
       } else {
         setMessage(res.message);
@@ -66,16 +68,8 @@ const Signup = () => {
 
     const res = await dispatch(signupGoogle(accessToken));
     if (res.status === 202) {
-      setCookie(
-        "user",
-        JSON.stringify({
-          type: res.type,
-          userId: res.id,
-          token: res.token,
-          name: res.name,
-        })
-      );
-      navigate("../");
+
+      navigate(`/role/${res.id}`);
       setMessage("");
     } else {
       setMessage(res.message);
@@ -90,16 +84,8 @@ const Signup = () => {
     console.log(response.userID)
     const res = await dispatch(signupFB(response.accessToken , response.userID));
     if (res.status === 202) {
-      setCookie(
-        "user",
-        JSON.stringify({
-          type: res.type,
-          userId: res.id,
-          token: res.token,
-          name: res.name,
-        })
-      );
-      navigate("../");
+
+      navigate(`/role/${res.id}`);
       setMessage("");
     } else {
       setMessage(res.message);
@@ -198,7 +184,7 @@ const Signup = () => {
         
                 <FacebookLogin
                   appId="702527821576717"
-                  autoLoad
+                  autoLoad={false}
                   callback={responseFacebook}
                   render={(renderProps) => (
                     <div onClick={renderProps.onClick}>

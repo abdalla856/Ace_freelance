@@ -4,6 +4,7 @@
   width: 100%;
   margin-top: 50px;
   margin-left: 20px;
+  text-align: center;
 }
 .payment_table,
 .payment_table th,
@@ -11,6 +12,7 @@
   border: 1px solid #ddd;
   padding: 8px;
   /* border-radius: 25px; */
+  text-transform: capitalize;
 }
 .payment_table tr:nth-child(even) {
   background-color: transparent;
@@ -19,7 +21,7 @@
 .payment_table th {
   padding-top: 12px;
   padding-bottom: 12px;
-  text-align: left;
+  text-align: center;
   background-color: transparent;
   color: white;
 }

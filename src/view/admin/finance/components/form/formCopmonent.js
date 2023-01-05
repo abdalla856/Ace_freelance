@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./formCopmonent.css";
 
 const FormCopmonent = ({ show = false, type = "" }) => {
-    const [close , setClose] = useState(show)
+    const [close , setClose] = useState("false")
     function closeHandle(e){
         e.preventDefault()
         setClose(!show)

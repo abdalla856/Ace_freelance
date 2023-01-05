@@ -1,23 +1,21 @@
 import { useCookies } from "react-cookie";
 
 const Users = (users = [], action) => {
-  // const [cookies, setCookie] = useCookies(["user"]);
   switch (action.type) {
     case "FETCH":
       return action.payload;
-    case "AUTH":
-      // setCookie(
-      //   "user",
-      //   JSON.stringify({
-      //     type: action.payload.type,
-      //     userId: action.payload.id,
-      //     token: action.payload.token,
-      //     name : action.payload.name
-      //   })
-      // );
-      // return [...users, action.payload];
-    case "UPLOAD":
-      return [...users, action.payload];
+    case "DELETE_USER":
+      const id = action.payload;
+
+      users = users.filter((user) => user.id !== id);
+      return users;
+    case "Update_User":
+      // cons
+      const newState = [...users]
+      newState[newState.findIndex((user) => user.id === action.payload.id)].role =
+        action.payload.type;
+        
+      return newState;
     case "LOGIN":
       return action.payload;
     case "SIGNUP":

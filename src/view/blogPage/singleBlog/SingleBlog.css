@@ -13,6 +13,7 @@
   font-weight: 900;
   font-size: 24px;
   background: #3444da;
+  text-transform: capitalize;
   padding: 10px 20px;
   border-radius: 35px;
 }
@@ -166,6 +167,8 @@
   align-items: center;
   border-radius: 30px;
   cursor: pointer;
+  text-transform:capitalize ;
+
 }
 .single-blog .comment-section .type-comment span svg {
   font-size: 70px;
@@ -256,9 +259,17 @@
   font-size: 24px;
   width: auto;
   padding: 10px 20px;
-}
 
+}
+.single-blog .related-posts .post_category .blog_cat{
+  text-transform:capitalize ;
+
+}
 .single-blog .related-posts .content_blog h3 {
   font-weight: 700;
   font-size: 28px;
+}
+.posts a {
+  text-decoration: none;
+  color :#000000
 }

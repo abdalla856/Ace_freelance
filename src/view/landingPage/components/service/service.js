@@ -39,8 +39,7 @@ const Service = () => {
     }
      if((bottom <= window.scrollY)){
       setTrans(false)
-      console.log(bottom)
-      console.log(window.scrollY)
+   
 
 
     }else if(window.scrollY >= top && !(bottom -2000<= window.scrollY) ){
@@ -58,8 +57,7 @@ const Service = () => {
 
       } else if (ref.current.offsetTop < window.scrollY) {
         // setTop(  window.scrollY-ref.current.offsetTop);
-        // console.log(ref.current.offsetTop);
-        // console.log(window.scrollY);
+   
       }
       setBottom(ref.current.offsetHeight + top);
       
@@ -124,7 +122,7 @@ const Service = () => {
             </ul>
           </div>
           <div className="right_side">
-            {/* {console.log(isVisible)} */}
+    
 
             <div
               className={`web`}

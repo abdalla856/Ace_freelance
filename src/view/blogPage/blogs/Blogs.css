@@ -141,6 +141,7 @@
 }
 
 .blogs .container .firstBox .info span:first-of-type {
+  text-transform:capitalize ;
   margin-right: 50px;
   background: #3f21e0;
   border-radius: 25px;
@@ -229,6 +230,7 @@
   font-weight: 900;
   font-size: 24px;
   color: #ffffff;
+  text-transform: capitalize;
 }
 
 .blogs .container .SecondBox .info span:last-of-type {
@@ -274,6 +276,8 @@
   font-weight: 900;
   font-size: 40px;
   color: #ffff;
+  text-transform: capitalize;
+
 }
 .thirdBlog-main .info span:last-of-type {
   font-weight: 900;
@@ -330,6 +334,8 @@
   font-weight: 900;
   font-size: 24px;
   color: #ffff;
+  text-transform: capitalize;
+
 }
 .thirdBlogs .thirdBlog .info span:last-of-type {
   font-weight: 900;
@@ -351,4 +357,10 @@
 .thirdBlogs .thirdBlog .creator .desc .name {
   font-weight: 700;
   font-size: 24px;
+}
+
+
+.blogContent a {
+  text-decoration: none;
+  color: black;
 }

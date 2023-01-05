@@ -8,12 +8,10 @@ const Blogs = (blogs = [], action) => {
       return action.payload;
 
     case "UPDATE":
-     console.log(action.payload._id);
-     console.log(blogs[0]._id);
-      blogs[
-        blogs.findIndex((blog)=>blog._id===action.payload._id)
-      ] = action.payload;
-      return blogs
+      const newState = [...blogs];
+      newState[newState.findIndex((blog) => blog._id === action.payload._id)] =
+        action.payload;
+      return newState;
     case "DELETE_BLOG":
       const id = action.payload;
       blogs = blogs.filter((blog) => blog._id !== id);

@@ -1,0 +1,7 @@
+.discount{
+    display: flex;
+
+}
+.discount input {
+    width: 20%;
+}

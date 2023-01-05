@@ -18,6 +18,14 @@ export const getAllBlogs = () => async (dispatch) => {
     console.log(err);
   }
 };
+export const getBlogs = () => async (dispatch) => {
+  try {
+    const blogs = await api.getBlogs();
+    dispatch({ type: "FETCH_ALL_BLOGS", payload: blogs.data });
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 export const getAllDataNumbers = () => async (dispatch) => {
   try {
@@ -64,9 +72,11 @@ export const getPhotoPath = (file) => async () => {
 export const updateBlog = (blog) => async (dispatch) => {
   try {
     const updatedblog = await api.updateBlog(blog);
-console.log(updatedblog.data.blog);
+
     dispatch({ type: "UPDATE", payload: updatedblog.data.blog });
+    return { status: 202 };
   } catch (err) {
     console.log(err.message);
   }
 };
+

@@ -8,7 +8,7 @@ import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import "./Navbar.css";
 const Navbar = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [isDarkMode, setDarkMode] = React.useState(false);
   const [isArabic, setArabic] = React.useState(false);
   const [isLoggedin, setLoggedin] = React.useState(false);
@@ -25,7 +25,9 @@ const Navbar = () => {
 
   const logout = () => {
     Cookies.remove("user");
-    navigate('/')
+    navigate('../')
+    window.location.reload();
+
   };
   return (
     <div className="navbar" style={{ backgroundColor: "white" }}>
@@ -58,7 +60,7 @@ const Navbar = () => {
               <a href="#project">Projects</a>
             </li>
             <li>
-              <a href="#blog">Blog</a>
+              <a href="/blog">Blog</a>
             </li>
             <li>
               <a href="#contact">Contact</a>
@@ -78,45 +80,6 @@ const Navbar = () => {
                 // size="md"
                 moonColor="black"
               />
-<<<<<<< HEAD
-              <span>/</span>
-              <input
-                type="button"
-                onChange={handleClick}
-                value={"Ar"}
-                className={isArabic ? "under" : ""}
-                onClick={handleClick}
-              />
-            </div>
-          </li>
-          <li onClick={() => setUserMenu(!userMenu)}>
-            {storedData.token ? (
-              <>
-                <span className="user">{storedData.name}</span>
-                <ul
-                  className={
-                    userMenu ? "list-of-user show-user" : "list-of-user"
-                  }
-                >
-                  <li>profile</li>
-                  {storedData.type === "admin" ? <li>Admin</li> : ""}
-
-                  <li className="logout" onClick={logout}>
-                    <span>
-                      <BiLogOut />
-                    </span>
-                    Log out
-                  </li>
-                </ul>
-              </>
-            ) : (
-              <Link className="btn2" to="/signin">
-                Sign in
-              </Link>
-            )}
-          </li>
-        </ul>
-=======
             </li>
             <li>
               <div className="lang">
@@ -140,17 +103,23 @@ const Navbar = () => {
           </ul>
           <ul className="user-content">
             <li onClick={() => setUserMenu(!userMenu)}>
-              {isLoggedin ? (
+              {storedData.token ? (
                 <>
-                  <span className="user">H</span>
+                  <span className="user">{storedData.name}</span>
                   <ul
                     className={
                       userMenu ? "list-of-user show-user" : "list-of-user"
                     }
                   >
                     <li>profile</li>
-                    <li>Message</li>
-                    <li className="logout">
+                    {storedData.type === "admin" ? (
+                      <li>
+                        <Link to="/admin" className="das_style">Dashboard</Link></li>
+                    ) : (
+                      ""
+                    )}
+
+                    <li className="logout" onClick={logout}>
                       <span>
                         <BiLogOut />
                       </span>
@@ -169,7 +138,6 @@ const Navbar = () => {
             {menu ? <AiOutlineClose /> : <FaBars />}
           </div>
         </div>
->>>>>>> 90436fd309575d58c2c17427f7890773a5e36cd8
       </div>
     </div>
   );

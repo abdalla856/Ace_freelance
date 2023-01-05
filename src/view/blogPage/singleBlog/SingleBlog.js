@@ -1,48 +1,93 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FiCopy } from "react-icons/fi";
-import { IoMdSend } from "react-icons/io";
+// import { IoMdSend } from "react-icons/io";
 import Contact from "../../landingPage/components/contact-us/contact";
 import Navbar from "../../landingPage/components/navbar/Navbar";
+import { useParams } from "react-router";
+import { getBlogs } from "../../../actions/blogActions";
+import { useSelector, useDispatch } from "react-redux";
 import "./SingleBlog.css";
+import moment from "moment";
+import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
+import DOMPurify from "dompurify";
+import draftToHtml from "draftjs-to-html";
+import { Link } from "react-router-dom";
 
 const SingleBlog = () => {
-  return (
-    <>
-      <Navbar />
-      <div className="single-blog">
-        <div className="container">
-          <div className="info">
-            <span className="info-one">Freelancing</span>
-            <span className="info-two">Tips</span>
-            <span className="info-one ">8 min to read</span>
-          </div>
-          <h1 className="blog-title">
-            How to be a Freelancer - Tips and Advice for Beginners (Freelancing
-            Jobs in Malaysia)
-          </h1>
-          <p>
-            In publishing and graphic design, Lorem ipsum is a placeholder text
-            commonly used to demonstrate the visual form of a document or a
-            typeface without relying on meaningful content.
-          </p>
-          <div className="creator">
-            <div className="avtar_blog">
+  const { id } = useParams();
+  let [editorState, setEditorState] = useState(() => EditorState.createEmpty());
+  const dispatch = useDispatch();
+  let [convertedContent, setConvertedContent] = useState(
+    draftToHtml(convertToRaw(editorState.getCurrentContent()))
+  );
+
+  useEffect(() => {
+    dispatch(getBlogs());
+  }, []);
+
+  const blogs = useSelector((state) => state?.Blogs);
+  const recentblogs = blogs.find((item) => item?._id === id);
+  const reltedblogs = blogs.filter(
+    blog => (blog?.type === recentblogs?.type) && (blog?._id !== recentblogs?._id)
+  );
+console.log(reltedblogs)
+  useEffect(() => {
+    if (recentblogs !== undefined) {
+  
+      setEditorState(
+        EditorState.createWithContent(
+          convertFromRaw(JSON.parse(recentblogs.content))
+        )
+      );
+    }
+  }, [recentblogs]);
+  useEffect(() => {
+    let currentContentAsHTML = draftToHtml(
+      convertToRaw(editorState.getCurrentContent())
+    );
+    setConvertedContent(currentContentAsHTML);
+
+  }, [editorState]);
+  const createMarkup = (html) => {
+ 
+    return {
+      __html: DOMPurify.sanitize(html),
+    };
+  };
+
+    return (
+      <>
+        <Navbar />
+        <div className="single-blog">
+          <div className="container">
+            <div className="info">
+              <span className="info-one">{recentblogs?.type}</span>
+              <span className="info-two">Tips</span>
+              <span className="info-one ">8 min to read</span>
+            </div>
+            <h1 className="blog-title">{recentblogs?.title}</h1>
+            <p>{recentblogs?.subcontent}</p>
+            <div className="creator">
+              <div className="avtar_blog">
+                <img
+                  src={require("../../../assets/imgs/avtar.png")}
+                  alt="blog avatar"
+                />
+              </div>
+              <div className="desc">
+                <div className="name">{recentblogs?.user}</div>
+                <div className="date">
+                  {" "}
+                  {moment(recentblogs?.createdAt).format("D MMMM YYYY")}
+                </div>
+              </div>
+            </div>
+            <div className="image-box">
               <img
-                src={require("../../../assets/imgs/avtar.png")}
-                alt="blog avatar"
+                src={require("../../../assets/imgs/singleBlog-1.png")}
+                alt=""
               />
-            </div>
-            <div className="desc">
-              <div className="name">Abdelrahman Zaian</div>
-              <div className="date">20 April 2022</div>
-            </div>
-          </div>
-          <div className="image-box">
-            <img
-              src={require("../../../assets/imgs/singleBlog-1.png")}
-              alt=""
-            />
-            <p>Image Courtesy of Laura Davidson Via Pinterest</p>
+              {/* <p>Image Courtesy of Laura Davidson Via Pinterest</p>
             <p>
               In publishing and graphic design, Lorem ipsum is a placeholder
               text commonly used to demonstrate the visual form of a document or
@@ -50,10 +95,10 @@ const SingleBlog = () => {
               and graphic design, Lorem ipsum is a placeholder text commonly
               used to demonstrate the visual form of a document or a typeface
               without relying on meaningful content.
-            </p>
-          </div>
+            </p> */}
+            </div>
 
-          <div className="first-part">
+            {/* <div className="first-part">
             <h1 className="heading">introduction</h1>
             <p>
               In publishing and graphic design, Lorem ipsum is a placeholder
@@ -135,26 +180,34 @@ const SingleBlog = () => {
               visual form of a document or a typeface without relying on
               meaningful content.
             </p>
-          </div>
-          <div className="keys">
-            <div className="keywords">
-              <span>Freelancing</span>
-              <span>Keywords</span>
-              <span>Algorithm</span>
-              <span>Words</span>
-            </div>
-            <div className="copy">
-              <span className="copy-link">
-                <FiCopy /> Copy link
-              </span>
-              <div className="boxs">
-                <span></span>
-                <span></span>
-                <span></span>
+          </div> */}
+  
+              <div
+                className="preview"
+                key={new Date().getTime()}
+                dangerouslySetInnerHTML={createMarkup(convertedContent)}
+              ></div>
+    
+
+            <div className="keys">
+              <div className="keywords">
+                <span>Freelancing</span>
+                <span>Keywords</span>
+                <span>Algorithm</span>
+                <span>Words</span>
+              </div>
+              <div className="copy">
+                <span className="copy-link">
+                  <FiCopy /> Copy link
+                </span>
+                <div className="boxs">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="comment-section">
+            {/* <div className="comment-section">
             <div className="type-comment">
               <input type="text" placeholder="Type your comment" />
               <span>
@@ -228,11 +281,75 @@ const SingleBlog = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="related-posts">
-            <h1 className="heading">related posts</h1>
-            <div className="posts">
-              <div className="post">
+          </div> */}
+            <div className="related-posts">
+              <h1 className="heading">related posts</h1>
+              <div className="posts">
+                {reltedblogs.length > 3
+                  ? reltedblogs.slice(0, 3).map(blog => {
+                    
+                     return <Link to={`../blog/${blog._id}`}>
+                      <div className="post">
+                        <div className="img-post">
+                          <img src={blog?.main_img} alt="post iamge" />
+                        </div>
+                        <div className="post_category">
+                          <div className="blog_cat">{blog?.type}</div>
+                          <div className="date">8 min to read</div>
+                        </div>
+                        <div className="content_blog">
+                          <h3>{blog?.title}</h3>
+                        </div>
+                        <div className="creator">
+                          <div className="avtar_blog">
+                            <img
+                              src={require("../../../assets/imgs/avtar.png")}
+                              alt="blog avatar"
+                            />
+                          </div>
+                          <div className="desc">
+                            <div className="name">{blog?.user_id.name}</div>
+                            <div className="date">
+                              {moment(blog?.createdAt).format("D MMMM YYYY")}
+                            </div>
+                          </div>
+                        </div>
+                      </div>;
+                      </Link>
+                    })
+                  : reltedblogs.map((blog) => {
+                      return (
+                        <Link to={`../blog/${blog._id}`}>
+                        <div className="post">
+                          <div className="img-post">
+                            <img src={blog?.main_img} alt="post iamge" />
+                          </div>
+                          <div className="post_category">
+                            <div className="blog_cat">{blog?.type}</div>
+                            <div className="date">8 min to read</div>
+                          </div>
+                          <div className="content_blog">
+                            <h3>{blog?.title}</h3>
+                          </div>
+                          <div className="creator">
+                            <div className="avtar_blog">
+                              <img
+                                src={require("../../../assets/imgs/avtar.png")}
+                                alt="blog avatar"
+                              />
+                            </div>
+                            <div className="desc">
+                              <div className="name">{blog?.user_id.name}</div>
+                              <div className="date">
+                                {moment(blog?.createdAt).format("D MMMM YYYY")}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        </Link>
+                      );
+                    })}
+                {/* <div className="post">
                 <div className="img-post">
                   <img
                     src={require("../../../assets/imgs/mechnical.png")}
@@ -259,8 +376,8 @@ const SingleBlog = () => {
                   </div>
                 </div>
               </div>
-              <div className="post">
-                <div className="img-post">
+              <div className="post"> */}
+                {/* <div className="img-post">
                   <img
                     src={require("../../../assets/imgs/mechnical.png")}
                     alt="post iamge"
@@ -284,42 +401,15 @@ const SingleBlog = () => {
                     <div className="name">Abdelrahman Zaian</div>
                     <div className="date">20 April 2022</div>
                   </div>
-                </div>
-              </div>
-              <div className="post">
-                <div className="img-post">
-                  <img
-                    src={require("../../../assets/imgs/mechnical.png")}
-                    alt="post iamge"
-                  />
-                </div>
-                <div className="post_category">
-                  <div className="blog_cat">Mechincal Design</div>
-                  <div className="date">8 min to read</div>
-                </div>
-                <div className="content_blog">
-                  <h3>WHY SOLIDWORKS IS THE G.O.A.T.</h3>
-                </div>
-                <div className="creator">
-                  <div className="avtar_blog">
-                    <img
-                      src={require("../../../assets/imgs/avtar.png")}
-                      alt="blog avatar"
-                    />
-                  </div>
-                  <div className="desc">
-                    <div className="name">Abdelrahman Zaian</div>
-                    <div className="date">20 April 2022</div>
-                  </div>
-                </div>
+                </div> */}
+                {/* </div> */}
               </div>
             </div>
           </div>
         </div>
-      </div>
-    <Contact />
-    </>
-  );
+        <Contact />
+      </>
+    );
 };
 
 export default SingleBlog;

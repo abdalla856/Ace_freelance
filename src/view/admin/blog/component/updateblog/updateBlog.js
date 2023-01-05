@@ -43,7 +43,6 @@ const UpdateBlog = () => {
     setBlog({
       ...blog,
       content: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
-    
     });
     convertContentToHTML();
   };
@@ -55,7 +54,6 @@ const UpdateBlog = () => {
     setBlog({
       ...blog,
       content: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
-    
     });
   };
   const createMarkup = (html) => {
@@ -75,12 +73,10 @@ const UpdateBlog = () => {
       setBlog({
         ...blog,
         content: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
-      
       });
     } else {
       setEditorState(EditorState.createEmpty());
     }
-
   };
 
   const uploadImageCallBack = async (file) => {
@@ -112,40 +108,38 @@ const UpdateBlog = () => {
       content: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
       updatedAt: Date.now(),
     });
-    console.log()
+    console.log();
   };
 
-  const Submitblog = (e) => {
-    // e.preventDefault();
+  const Submitblog = async (e) => {
+    e.preventDefault();
 
+    const data = await dispatch(updateBlog(blog));
 
-    dispatch(updateBlog(blog));
     navigate("/admin_blog");
   };
 
   useEffect(() => {
     dispatch(getBlogbyId(id));
-    
   }, [dispatch, id]);
   const blogState = useSelector((state) => {
     var blogs = state.Blogs;
 
     blogs = blogs.filter((blog) => blog._id === id);
-    
 
     return blogs[0];
   });
 
   useEffect(() => {
     if (blogState !== undefined) {
-      setBlog({ ...blog,...blogState });
+      setBlog({ ...blog, ...blogState });
       setEditorState(
         EditorState.createWithContent(
           convertFromRaw(JSON.parse(blogState.content))
         )
       );
     }
-  }, [blogState ]);
+  }, [blogState]);
 
   if (blogState !== undefined)
     return (

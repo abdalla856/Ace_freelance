@@ -163,7 +163,7 @@
   width: 200px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
-.navbar .tabs li .show-user {
+.navbar  li  .show-user {
   display: block;
 }
 
@@ -185,11 +185,9 @@
   margin-right: 10px;
 }
 
-<<<<<<< HEAD
 .user {
   text-transform: capitalize;
 }
-=======
 .navbar .bars svg {
   font-size: 30px;
   cursor: pointer;
@@ -203,4 +201,7 @@
     display: none;
   }
 }
->>>>>>> 90436fd309575d58c2c17427f7890773a5e36cd8
+.das_style{
+  color: black;
+  text-decoration: none;
+}

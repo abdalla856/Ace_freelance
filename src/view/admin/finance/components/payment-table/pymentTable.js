@@ -55,7 +55,7 @@ if(type==="New") {
   function saveHandle(e, id) {
     // e.preventDefault();
     if (type === "New") {
-      console.log("in")
+
       if (
         form.name.length === 0 ||
         form.original_fees.length === 0 ||
@@ -63,7 +63,7 @@ if(type==="New") {
         form.discount.length === 0
       ) {
         alert("All the inputs required *");
-        console.log(form);
+
         setShow(true);
       } else {
         disptach(addBill(form, id));
@@ -166,10 +166,10 @@ if(type==="New") {
           <h3>Total : {sum} RM</h3>
         </div>
 
-        {show && (
+         
           <form
-            className="popup_form"
-            style={{ animation: show ? "fadeIn 2s" : "fadeOut 2s" }}
+            className={`popup_form ${show ? "visible" :  "hidden"}` }
+            
           >
             <h1>{type} Receipt</h1>
             <label className="form_label">order Name</label>
@@ -216,7 +216,7 @@ if(type==="New") {
               </button>
             </div>
           </form>
-        )}
+   
       </>
     );
 };

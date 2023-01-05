@@ -1,0 +1,56 @@
+.discount_page_main {
+  background-color: #282c34;
+  min-height: 100vh;
+
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.main_dash_comp {
+  display: flex;
+  flex-direction: row;
+}
+.discount_sections {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.discount_table {
+  width: 100%;
+  border: none;
+  text-align: center;
+}
+tr th {
+  padding-bottom: 40px;
+}
+tr td {
+  padding-bottom: 40px;
+}
+.discount_actions button {
+  width: 70px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 18px;
+  border-color: transparent;
+}
+.discount_reset{margin-right: 20px; color :white;  background-color: green;}
+.discount_Delete{color :white ; background-color: red;}
+.add_new_discount{ width: 100%; }
+.add_new_discount button{float: right; margin: 50px auto;
+width: 200px;
+height: 50px;
+border-radius: 10px;
+font-size: 20px;
+color: white;
+background-color: green;
+margin-right: 30px;}
+
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 2s linear;
+}

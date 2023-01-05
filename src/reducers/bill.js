@@ -13,12 +13,11 @@ const Bills = (bills = [], action) => {
         return action.payload;
   
       case "UPDATE_Bill":
-       console.log(action.payload);
-       console.log(bills[0]._id);
-       bills[
-          bills.findIndex((bill)=>bill._id===action.payload._id)
+       const newState =[...bills]
+       newState[
+        newState.findIndex((bill)=>bill._id===action.payload._id)
         ] = action.payload;
-        return bills
+        return newState
       case "DELETE_BILL":
         const id = action.payload;
         console.log(id)

@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { updateUser } from "../../actions/usersActions";
+import { useCookies } from "react-cookie";
+import { useParams } from "react-router";
+import { useNavigate } from "react-router";
 import "./Role.css";
 const Role = () => {
+  const [cookies, setCookie] = useCookies(["user"]);
+  const navigate = useNavigate();
+  const { id } = useParams();
   const [selected, setSelected] = useState(null);
   const [date, setDate] = useState(null);
   const [alert, setAlert] = useState({ show: false, type: "", msg: "" });
+  const dispatch = useDispatch();
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setAlert({show: true, type: "", msg: "" });
+      setAlert({ show: true, type: "", msg: "" });
     }, 3000);
     return () => clearTimeout(timeout);
   });
@@ -17,16 +26,24 @@ const Role = () => {
     setDate(newDate);
   };
   console.log(selected, date);
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     if (selected === null || date === null) {
       setAlert({ show: true, type: "warning", msg: "Please Enter value" });
     } else {
-      setAlert({
-        show: true,
-        type: "success",
-        msg: "the data is created successfully",
-      });
+      const res = await dispatch(updateUser(id, date, selected));
+      setCookie(
+        "user",
+        JSON.stringify({
+          type: res.type,
+          userId: res.id,
+          token: res.token,
+          name: res.name,
+        })
+      );
+
+      navigate('../')
+      window.location.reload();
     }
   };
 

@@ -89,7 +89,7 @@ font-family: sans-serif;
 }
 .card_example img {
   width: 100%;
-  height: 80%;
+  height: 600px;
 
   object-fit: cover;
   -webkit-transition: border-radius 1s;
@@ -103,7 +103,9 @@ font-family: sans-serif;
 
 .card_example .text {
   font-size: 14px;
-  height: 35px;
+  height: auto;
+  padding-top: 20px;
+  padding-bottom: 10px;
   font-weight: 400;
   text-transform: uppercase;
 }
@@ -148,3 +150,16 @@ font-family: sans-serif;
    
   }
 } */
+
+
+@media (min-width:1200px){
+  .card_example img {
+    width: 100%;
+    height: 80%;
+  
+    object-fit: cover;
+    -webkit-transition: border-radius 1s;
+    transition: border-radius 1s;
+    margin-bottom: 10px;
+  }
+}
