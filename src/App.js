@@ -27,6 +27,8 @@ import AddMechanicalPage from "./view/admin/products/mechanical/components/add_m
 import UpdateMechanicalPage from "./view/admin/products/mechanical/components/upade_mechanical_product/updateMechanicalProject";
 import ReviewsPage from "./view/admin/reviews/reviews";
 import Discounts from "./view/admin/discounts/discountPage";
+import Products from "./view/productsPage/Products";
+import Product from "./view/productPage/Product";
 function App() {
   const storedData = JSON.parse(Cookies.get("user") || "{}");
   let routes;
@@ -37,6 +39,8 @@ function App() {
         <Route path="/blog/:id" element={<SingleBlog />} />
         <Route path="/" element={<Landing />} />
         <Route path="*" element={<Landing />} />
+        <Route path="/services/:service" element={<Products />} />
+          <Route path="/services/:service/:id" element={<Product />} />
       </Routes>
     );
   } else if (storedData.token && storedData.type === "admin") {
@@ -54,7 +58,8 @@ function App() {
 
         <Route path ="/web_add_product" element={<WebAddProduct/>}/>
         <Route path ="/add_web_pro" element={<AddWebPage/>}/>
-
+        <Route path="/services/:service" element={<Products />} />
+          <Route path="/services/:service/:id" element={<Product />} />
         <Route path ="/graphic_add_product" element={<GraphicAddProduct/>}/>
         <Route path ="/mechanical_add_product" element={<MechanicalAddProduct/>}/>
         <Route path ="/add_graphic_pro" element={<AddGraphicPage/>}/>

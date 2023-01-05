@@ -1,0 +1,240 @@
+.products {
+  padding-top: 100px;
+}
+
+.products .sm-nav {
+  position: relative;
+}
+.products .sm-nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+}
+.products .sm-nav::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  width: calc(100%);
+  height: 1px;
+  top: 1px;
+  background-color: black;
+}
+.products .sm-nav::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  width: calc(100%);
+  height: 1px;
+  bottom: 0px;
+  background-color: black;
+}
+
+.products .sm-nav .location {
+  font-weight: 600;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.products .sm-nav .cart {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.products .sm-nav .cart svg {
+  font-size: 30px;
+}
+
+.products .sm-nav .cart span {
+  font-weight: 600;
+  font-size: 30px;
+  text-transform: uppercase;
+  margin-left: 5px;
+}
+
+@media (max-width: 991px) {
+  .products .sm-nav .location {
+    font-size: 20px;
+  }
+  .products .sm-nav .cart span {
+    font-size: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .products .sm-nav .location {
+    font-size: 12px;
+  }
+  .products .sm-nav .cart svg {
+    font-size: 16px;
+  }
+  .products .sm-nav .cart span {
+    font-size: 12px;
+  }
+}
+
+.products > .container .products-title {
+  width: 80%;
+  margin: 70px auto;
+}
+
+@media (max-width: 767px) {
+  .products > .container .products-title {
+    width: 100%;
+  }
+}
+
+@media (max-width: 650px) {
+  .products > .container .products-title h1 {
+    font-size: 30px;
+  }
+}
+.products > .container .products-title h3 {
+  font-weight: 400;
+  font-size: 37.4441px;
+  font-family: "Abril Fatface";
+}
+
+.products > .container .products-title h1 {
+  font-weight: 800;
+  font-size: 166.19px;
+  text-transform: uppercase;
+  line-height: 0.7;
+}
+
+@media (max-width: 1919px) {
+  .products > .container .products-title h1 {
+    font-size: 160px;
+  }
+}
+
+@media (max-width: 1749px) {
+  .products > .container .products-title h1 {
+    font-size: 136px;
+  }
+}
+@media (max-width: 1499px) {
+  .products > .container .products-title h1 {
+    font-size: 109px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .products > .container .products-title h1 {
+    font-size: 90px;
+  }
+}
+
+@media (max-width: 991px) {
+  .products > .container .products-title h1 {
+    font-size: 69px;
+  }
+}
+@media (max-width: 767px) {
+  .products > .container .products-title h1 {
+    font-size: 66px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 650px) {
+  .products > .container .products-title h1 {
+    font-size: 50px;
+  }
+}
+
+.products > .container .products-title h3:last-of-type {
+  font-weight: 400;
+  font-size: 37.4441px;
+  font-family: "Abril Fatface";
+  text-align: right;
+}
+
+@media (max-width: 485px) {
+  .products > .container .products-title h1 {
+    font-size: 40px;
+  }
+
+  .products > .container .products-title h3,
+  .products > .container .products-title h3:last-of-type {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 385px) {
+  .products > .container .products-title h1 {
+    font-size: 20px;
+  }
+  .products > .container .products-title h3,
+  .products > .container .products-title h3:last-of-type {
+    font-size: 16px;
+  }
+}
+
+.products > .container .cards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.products > .container .cards .product {
+  width: 23.5%;
+  margin-bottom: 30px;
+}
+@media (max-width: 1199px) {
+  .products > .container .cards .product {
+    width: 48.5%;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .products > .container .cards .product {
+    width: 70%;
+    margin: 0 auto 30px;
+  }
+}
+.products > .container .cards .product img {
+  width: 100%;
+}
+.products > .container .cards .product .product-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.products > .container .cards .product .product-info .name {
+  font-weight: 700;
+  font-size: 25.5385px;
+  text-transform: uppercase;
+}
+@media (max-width: 1499px) {
+  .products > .container .cards .product .product-info .name {
+    font-size: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .products > .container .cards .product .product-info .name {
+    font-size: 16px;
+  }
+}
+.products > .container .cards .product .product-info .price {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+.products > .container .cards .product .product-details .solds {
+  font-size: 24px;
+  font-weight: bold;
+  color: gray;
+}
+
+@media (max-width: 767px) {
+  .products > .container .cards .product .product-info .name,
+  .products > .container .cards .product .product-info .price,
+  .products > .container .cards .product .product-details .solds {
+    font-size: 16px;
+  }
+}
