@@ -86,6 +86,8 @@ function App() {
         <Route path="/blog/:id" element={<SingleBlog />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/services/:service" element={<Products />} />
+          <Route path="/services/:service/:id" element={<Product />} />
         <Route path="/" element={<Landing />} />
         <Route path="*" element={<Landing />} />
       </Routes>
