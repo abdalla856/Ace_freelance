@@ -99,7 +99,7 @@
   font-weight: 800;
   font-size: 166.19px;
   text-transform: uppercase;
-  line-height: 0.7;
+  line-height: 0.9;
 }
 
 @media (max-width: 1919px) {
@@ -275,3 +275,9 @@
     font-size: 16px;
   }
 }
+
+
+/* .product-cards a{
+  color: inherit;
+    text-decoration: inherit;
+} */

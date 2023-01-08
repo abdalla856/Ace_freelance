@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { AiOutlineShoppingCart, AiFillStar } from "react-icons/ai";
 import {
   MdOutlineKeyboardArrowDown,
@@ -7,7 +7,39 @@ import {
 import Contact from "../landingPage/components/contact-us/contact";
 import Navbar from "../landingPage/components/navbar/Navbar";
 import "./product.css";
+import { useParams } from "react-router";
+import {
+  getAllWebProducts,
+  getAllMarketingProducts,
+  getAllMechanicalProducts,
+  getAllGarphicProducts,
+} from "../../actions/productAction";
+import { useSelector, useDispatch } from "react-redux";
 const Product = () => {
+  const { service, id } = useParams();
+  const [services, setServices] = useState("");
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (service === "web") {
+      setServices("Web Technology");
+      dispatch(getAllWebProducts());
+    } else if (service === "marketing") {
+      setServices("Marketing& Media");
+      dispatch(getAllMarketingProducts());
+    } else if (service === "graphic") {
+      setServices("Graphic Desgin");
+      dispatch(getAllGarphicProducts());
+    } else if (service === "mech") {
+      setServices("Mechanical Design");
+      dispatch(getAllMechanicalProducts());
+    }
+  }, [service]);
+  const products = useSelector((state) => state.Products);
+  const recentpoduct = products.find((item) => item?._id === id);
+  const reltedproducts = products.filter(
+    (blog) =>
+      blog?.type === recentpoduct?.type && blog?._id !== recentpoduct?._id
+  );
   return (
     <>
       <Navbar />
@@ -15,7 +47,7 @@ const Product = () => {
         <div className="sm-nav">
           <div className="container">
             <span className="location">
-              Home>Services>Graphic design>BUSINESS CARD
+              Home{">"}Services{">"}Graphic design{">"}{recentpoduct?.title}
             </span>
             <div className="cart">
               <AiOutlineShoppingCart />
@@ -25,12 +57,9 @@ const Product = () => {
         </div>
         <div className="container">
           <div className="theProduct">
-            <img
-              src={require("../../assets/imgs/businessCard.png")}
-              alt="product"
-            />
+            <img src={recentpoduct?.images[0]} alt="product" />
             <div className="product-details">
-              <h3 className="product-name">business card</h3>
+              <h3 className="product-name">{recentpoduct?.title}</h3>
               <div className="stars">
                 <AiFillStar />
                 <AiFillStar />
@@ -38,7 +67,7 @@ const Product = () => {
                 <AiFillStar />
                 <AiFillStar />
               </div>
-              <h4 className="product-price">RM 40</h4>
+              <h4 className="product-price">RM {recentpoduct?.price}</h4>
               <div className="qty">
                 <MdOutlineKeyboardArrowUp />
                 <span className="number">1</span>
@@ -50,22 +79,7 @@ const Product = () => {
               </div>
               <div className="how-to-buy">
                 <h5>product details</h5>
-                <p> blablabla</p>
-                <p>
-                  CHAT FIRST BEFORE PLACING AN ORDER. PRICE MAY VARY BASED ON
-                  THE COMPLEXITY OF YOUR DESIGN.
-                </p>
-                <p>
-                  How to order: 1. Send the detail and logo for the professional
-                  business card or thank you card that you want to design to
-                  enquiry.acetech@gmail.com or fill up this google form:
-                  https://bit.ly/35cETX4 2. Wait for 2-5 working days .
-                </p>
-                <p>
-                  Get your business card design (PNG, PDF, JPG, SVG) that we
-                  sent to your E-mail No cancellation is allowed after
-                  confirmation of payment.
-                </p>
+                {recentpoduct?.description}
               </div>
             </div>
           </div>
@@ -129,7 +143,37 @@ const Product = () => {
           <h2 className="related-title">related products</h2>
           <div className="container">
             <div className="product-cards">
-              <div className="product">
+              {reltedproducts.length > 3
+                ? reltedproducts.slice(0, 3).map((product) => {
+                    return (
+                      <div className="product">
+                        <img src={product?.images[0]} alt="" />
+                        <div className="product-details">
+                          <div className="product-info">
+                            <h3 className="name">{product?.title}</h3>
+                            <span className="price">RM {product?.price}</span>
+                          </div>
+                          <div className="solds">{product?.buy} Solds</div>
+                        </div>
+                      </div>
+                    );
+                  })
+                : reltedproducts.map((product) => {
+                    return (
+                      <div className="product">
+                        <img src={product?.images[0]} alt="" />
+                        <div className="product-details">
+                          <div className="product-info">
+                            <h3 className="name">{product?.title}</h3>
+                            <span className="price">RM {product?.price}</span>
+                          </div>
+                          <div className="solds">{product?.buy} Solds</div>
+                        </div>
+                      </div>
+                    );
+                  })}
+
+              {/* <div className="product">
                 <img
                   src={require("../../assets/imgs/businessCard.png")}
                   alt=""
@@ -167,20 +211,7 @@ const Product = () => {
                   </div>
                   <div className="solds">301 Solds</div>
                 </div>
-              </div>
-              <div className="product">
-                <img
-                  src={require("../../assets/imgs/businessCard.png")}
-                  alt=""
-                />
-                <div className="product-details">
-                  <div className="product-info">
-                    <h3 className="name">Business Card</h3>
-                    <span className="price">RM 40</span>
-                  </div>
-                  <div className="solds">301 Solds</div>
-                </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

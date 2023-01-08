@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useOnScreen from "../../../../shared/intersesction/intersection";
 import "./service.css";
-
+import { Link } from "react-router-dom";
 
 const Service = () => {
   const [bot, setBot] = useState("0%");
@@ -146,7 +146,7 @@ const Service = () => {
                 load speed, responsive, user-friendly and eye-catching are our
                 main criterias to tailor your website for your target audience.
               </p>
-              <a href="#web">learn more</a>
+              <a href="/services/web">learn more</a>
             </div>
 
             <div
@@ -169,7 +169,7 @@ const Service = () => {
                 traffic to your website. We assist in keeping projects updated,
                 from technology changes to the addition of new functionality.
               </p>
-              <a href="#markting">learn more</a>
+              <a href="/services/marketing">learn more</a>
             </div>
             <div
               className="graphic"
@@ -192,7 +192,7 @@ const Service = () => {
                 load speed, responsive, user-friendly and eye-catching are our
                 main criterias to tailor your website for your target audience.
               </p>
-              <a href="#graphic">learn more</a>
+              <a href="/services/graphic">learn more</a>
             </div>
             <div
               className="mech"
@@ -213,7 +213,7 @@ const Service = () => {
                 or AutoCAD, We improve the ease of product use, reduce cost, and
                 increase efficiency and accuracy.
               </p>
-              <a href="#mech">learn more</a>
+              <a href="/services/mech">learn more</a>
             </div>
           </div>
         </div>

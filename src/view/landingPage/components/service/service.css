@@ -125,3 +125,7 @@
   flex-wrap: wrap;
 }
 
+.left_side a {
+  text-decoration: none;
+  list-style:  none;
+}
