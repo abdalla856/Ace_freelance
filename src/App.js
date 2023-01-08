@@ -17,7 +17,7 @@ import WebAddProduct from "./view/admin/products/web/webAddproduct";
 import AddWebPage from "./view/admin/products/web/components/add_web_product/addWebProduct";
 import GraphicAddProduct from "./view/admin/products/graphic/graphicAddproduct";
 import UpdateWebPage from "./view/admin/products/web/components/upade_web_product/updateWebProject";
-import AddGraphicPage from './view/admin/products/graphic/components/add_web_product/addGraphicProduct'
+import AddGraphicPage from "./view/admin/products/graphic/components/add_web_product/addGraphicProduct";
 import UpdateGraphicPage from "./view/admin/products/graphic/components/upade_graphic_product/updateGraphicProject";
 import MarketingAddProduct from "./view/admin/products/marketing/marketingAddproduct";
 import AddMarketingPage from "./view/admin/products/marketing/components/add_market_product/addMarketingProduct";
@@ -29,6 +29,7 @@ import ReviewsPage from "./view/admin/reviews/reviews";
 import Discounts from "./view/admin/discounts/discountPage";
 import Products from "./view/productsPage/Products";
 import Product from "./view/productPage/Product";
+import Cart from "./view/cart/Cart";
 function App() {
   const storedData = JSON.parse(Cookies.get("user") || "{}");
   let routes;
@@ -40,7 +41,8 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="*" element={<Landing />} />
         <Route path="/services/:service" element={<Products />} />
-          <Route path="/services/:service/:id" element={<Product />} />
+        <Route path="/services/:service/:id" element={<Product />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     );
   } else if (storedData.token && storedData.type === "admin") {
@@ -54,26 +56,41 @@ function App() {
         <Route path="/order_admin" element={<OrdersPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:id" element={<SingleBlog />} />
-        <Route path="/update_blog/:id" element={<UpdateBlog/>}/> 
+        <Route path="/update_blog/:id" element={<UpdateBlog />} />
 
-        <Route path ="/web_add_product" element={<WebAddProduct/>}/>
-        <Route path ="/add_web_pro" element={<AddWebPage/>}/>
+        <Route path="/web_add_product" element={<WebAddProduct />} />
+        <Route path="/add_web_pro" element={<AddWebPage />} />
         <Route path="/services/:service" element={<Products />} />
-          <Route path="/services/:service/:id" element={<Product />} />
-        <Route path ="/graphic_add_product" element={<GraphicAddProduct/>}/>
-        <Route path ="/mechanical_add_product" element={<MechanicalAddProduct/>}/>
-        <Route path ="/add_graphic_pro" element={<AddGraphicPage/>}/>
+        <Route path="/services/:service/:id" element={<Product />} />
+        <Route path="/graphic_add_product" element={<GraphicAddProduct />} />
+        <Route
+          path="/mechanical_add_product"
+          element={<MechanicalAddProduct />}
+        />
+        <Route path="/add_graphic_pro" element={<AddGraphicPage />} />
 
-        <Route path ="/marketing_add_product" element={<MarketingAddProduct/>}/>
-        <Route path ="/add_marketing_pro" element={<AddMarketingPage/>}/>
-        <Route path ="/add_mechanical_pro" element={<AddMechanicalPage/>}/>
+        <Route
+          path="/marketing_add_product"
+          element={<MarketingAddProduct />}
+        />
+        <Route path="/add_marketing_pro" element={<AddMarketingPage />} />
+        <Route path="/add_mechanical_pro" element={<AddMechanicalPage />} />
 
-        <Route path ="/update_web_project/:id" element={<UpdateWebPage/>}/>
-        <Route path ="/update_graphic_project/:id" element={<UpdateGraphicPage/>}/>
-        <Route path ="/update_marketing_project/:id" element={<UpdateMarketingPage/>}/>
-        <Route path ="/update_mechanical_project/:id" element={<UpdateMechanicalPage/>}/>
-        <Route path ="/reviews_admin" element={<ReviewsPage/>}/>
-        <Route path ="/discounts_admin" element={<Discounts/>}/>
+        <Route path="/update_web_project/:id" element={<UpdateWebPage />} />
+        <Route
+          path="/update_graphic_project/:id"
+          element={<UpdateGraphicPage />}
+        />
+        <Route
+          path="/update_marketing_project/:id"
+          element={<UpdateMarketingPage />}
+        />
+        <Route
+          path="/update_mechanical_project/:id"
+          element={<UpdateMechanicalPage />}
+        />
+        <Route path="/reviews_admin" element={<ReviewsPage />} />
+        <Route path="/discounts_admin" element={<Discounts />} />
         <Route path="/" element={<Landing />} />
         <Route path="*" element={<Landing />} />
       </Routes>

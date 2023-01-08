@@ -11,7 +11,7 @@ const Products = () => {
         <div className="sm-nav">
           <div className="container">
             <span className="location">Home>Services>Graphic design</span>
-            <div className="cart">
+            <div className="cart-icon">
               <AiOutlineShoppingCart />
               <span>Cart[0]</span>
             </div>
@@ -23,9 +23,18 @@ const Products = () => {
             <h1>graphic design</h1>
             <h3>by Ace Freelancing</h3>
           </div>
-          <div className="cards">
+          <div className="product-cards">
             <div className="product">
-              <img src={require("../../assets/imgs/businessCard.png")} alt="" />
+              <div className="product-slider-img">
+                <img
+                  src={require("../../assets/imgs/businessCard.png")}
+                  alt=""
+                />
+                <img
+                  src={require("../../assets/imgs/businessCard2.png")}
+                  alt=""
+                />
+              </div>
               <div className="product-details">
                 <div className="product-info">
                   <h3 className="name">Business Card</h3>
@@ -35,7 +44,16 @@ const Products = () => {
               </div>
             </div>
             <div className="product">
-              <img src={require("../../assets/imgs/businessCard.png")} alt="" />
+              <div className="product-slider-img">
+                <img
+                  src={require("../../assets/imgs/businessCard.png")}
+                  alt=""
+                />
+                <img
+                  src={require("../../assets/imgs/businessCard2.png")}
+                  alt=""
+                />
+              </div>
               <div className="product-details">
                 <div className="product-info">
                   <h3 className="name">Business Card</h3>
@@ -45,7 +63,16 @@ const Products = () => {
               </div>
             </div>
             <div className="product">
-              <img src={require("../../assets/imgs/businessCard.png")} alt="" />
+              <div className="product-slider-img">
+                <img
+                  src={require("../../assets/imgs/businessCard.png")}
+                  alt=""
+                />
+                <img
+                  src={require("../../assets/imgs/businessCard2.png")}
+                  alt=""
+                />
+              </div>
               <div className="product-details">
                 <div className="product-info">
                   <h3 className="name">Business Card</h3>
@@ -55,7 +82,16 @@ const Products = () => {
               </div>
             </div>
             <div className="product">
-              <img src={require("../../assets/imgs/businessCard.png")} alt="" />
+              <div className="product-slider-img">
+                <img
+                  src={require("../../assets/imgs/businessCard.png")}
+                  alt=""
+                />
+                <img
+                  src={require("../../assets/imgs/businessCard2.png")}
+                  alt=""
+                />
+              </div>
               <div className="product-details">
                 <div className="product-info">
                   <h3 className="name">Business Card</h3>
@@ -63,9 +99,17 @@ const Products = () => {
                 </div>
                 <div className="solds">301 Solds</div>
               </div>
-            </div>
-            <div className="product">
-              <img src={require("../../assets/imgs/businessCard.png")} alt="" />
+            </div>    <div className="product">
+              <div className="product-slider-img">
+                <img
+                  src={require("../../assets/imgs/businessCard.png")}
+                  alt=""
+                />
+                <img
+                  src={require("../../assets/imgs/businessCard2.png")}
+                  alt=""
+                />
+              </div>
               <div className="product-details">
                 <div className="product-info">
                   <h3 className="name">Business Card</h3>
@@ -73,9 +117,17 @@ const Products = () => {
                 </div>
                 <div className="solds">301 Solds</div>
               </div>
-            </div>
-            <div className="product">
-              <img src={require("../../assets/imgs/businessCard.png")} alt="" />
+            </div>    <div className="product">
+              <div className="product-slider-img">
+                <img
+                  src={require("../../assets/imgs/businessCard.png")}
+                  alt=""
+                />
+                <img
+                  src={require("../../assets/imgs/businessCard2.png")}
+                  alt=""
+                />
+              </div>
               <div className="product-details">
                 <div className="product-info">
                   <h3 className="name">Business Card</h3>
@@ -83,9 +135,17 @@ const Products = () => {
                 </div>
                 <div className="solds">301 Solds</div>
               </div>
-            </div>
-            <div className="product">
-              <img src={require("../../assets/imgs/businessCard.png")} alt="" />
+            </div>    <div className="product">
+              <div className="product-slider-img">
+                <img
+                  src={require("../../assets/imgs/businessCard.png")}
+                  alt=""
+                />
+                <img
+                  src={require("../../assets/imgs/businessCard2.png")}
+                  alt=""
+                />
+              </div>
               <div className="product-details">
                 <div className="product-info">
                   <h3 className="name">Business Card</h3>
@@ -93,9 +153,17 @@ const Products = () => {
                 </div>
                 <div className="solds">301 Solds</div>
               </div>
-            </div>
-            <div className="product">
-              <img src={require("../../assets/imgs/businessCard.png")} alt="" />
+            </div>    <div className="product">
+              <div className="product-slider-img">
+                <img
+                  src={require("../../assets/imgs/2 4.png")}
+                  alt=""
+                />
+                <img
+                  src={require("../../assets/imgs/businessCard2.png")}
+                  alt=""
+                />
+              </div>
               <div className="product-details">
                 <div className="product-info">
                   <h3 className="name">Business Card</h3>
