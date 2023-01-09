@@ -1,11 +1,12 @@
 import axios from "axios";
 
-const userURL = "http://localhost:5000/user";
-const blogURL = "http://localhost:5000/blog";
-const billURL = "http://localhost:5000/bill";
-const productURL = "http://localhost:5000/product";
-const reveiwURL = "http://localhost:5000/review";
-const discountURL = "http://localhost:5000/discount";
+const userURL = process.env.userURL || "http://localhost:5000/user";
+const blogURL = process.env.blogURL ||"http://localhost:5000/blog";
+const billURL = process.env.billURL ||"http://localhost:5000/bill";
+const productURL =process.env.productURL || "http://localhost:5000/product";
+const reveiwURL = process.env.reveiwURL ||"http://localhost:5000/review";
+const discountURL =process.env.discountURL || "http://localhost:5000/discount";
+const orderURL =process.env.orderURL || "http://localhost:5000/order";
 // users api
 
 export const getAllActioveUsers = () =>
@@ -193,3 +194,18 @@ export const addDiscount = (data) =>
   axios.post(`${discountURL}/new_discount`, data, {
     headers: { "Content-Type": "application/json" },
   });
+
+
+  // orders APIs
+
+  export const addNewOrder = (order) =>axios.post(`${orderURL}/new_order` , order , {
+    headers: { "Content-Type": "application/json" },
+  });
+
+
+  export const getAllOrders =()=>axios.get(`${orderURL}/all_orders`)
+  export const updateOrder =(id, progress)=>axios.patch(`${orderURL}/update_order` , {id :id , progress :progress} , {
+    headers: { "Content-Type": "application/json" },
+
+  })
+  export const deleteORder =(id)=>axios.delete(`${orderURL}/delete_order/${id}` )

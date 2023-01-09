@@ -5,6 +5,7 @@ import Bills from './bill'
 import Products from './product';
 import Revewis from './review';
 import Discounts from './discount';
+import Orders from './order';
 import {combineReducers} from 'redux';
 export default combineReducers({
     Users :Users,
@@ -12,5 +13,6 @@ export default combineReducers({
     Bills :Bills , 
     Products :Products,
     Reviews:Revewis , 
-    Discounts:Discounts
+    Discounts:Discounts,
+    Orders:Orders
 })

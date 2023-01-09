@@ -1,7 +1,7 @@
 .popup_form {
   color: black;
   background-color: white;
-  position: absolute;
+  position: fixed;
   top: 5%;
   left: 50%;
   width: 500px;
