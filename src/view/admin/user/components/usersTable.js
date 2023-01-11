@@ -2,21 +2,25 @@ import React, { useEffect, useState } from "react";
 
 import "./usersTable.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUserInfo, deleteUser , updateUserAdmin} from "../../../../actions/usersActions";
+import {
+  getAllUserInfo,
+  deleteUser,
+  updateUserAdmin,
+} from "../../../../actions/usersActions";
 const UserTable = () => {
   const [info, setInfo] = useState({
     show: false,
     id: "",
   });
-  const [updatedusers , setUsers] = useState({})
+  const [updatedusers, setUsers] = useState({});
   const [select, setSelected] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllUserInfo());
   }, [dispatch]);
 
-  const users = useSelector((state) => (state.Users));
-  
+  const users = useSelector((state) => state.Users);
+
   function deletUser(id) {
     dispatch(deleteUser(id));
   }
@@ -27,20 +31,19 @@ const UserTable = () => {
       show: false,
     });
   }
-  const  saveHandle = async(e)=> {
+  const saveHandle = async (e) => {
     e.preventDefault();
 
     if (select === "") {
       alert("Please Choose The User Type");
     }
-  const data= await  dispatch(updateUserAdmin(info.id , select))
-  if(data.status === 202){
-
-    setInfo({
-      show:false
-    })
-  }
-  }
+    const data = await dispatch(updateUserAdmin(info.id, select));
+    if (data.status === 202) {
+      setInfo({
+        show: false,
+      });
+    }
+  };
   if (users.length !== 0)
     return (
       <>

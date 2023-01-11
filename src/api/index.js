@@ -1,12 +1,13 @@
 import axios from "axios";
 
 const userURL = process.env.userURL || "http://localhost:5000/user";
-const blogURL = process.env.blogURL ||"http://localhost:5000/blog";
-const billURL = process.env.billURL ||"http://localhost:5000/bill";
-const productURL =process.env.productURL || "http://localhost:5000/product";
-const reveiwURL = process.env.reveiwURL ||"http://localhost:5000/review";
-const discountURL =process.env.discountURL || "http://localhost:5000/discount";
-const orderURL =process.env.orderURL || "http://localhost:5000/order";
+const blogURL = process.env.blogURL || "http://localhost:5000/blog";
+const billURL = process.env.billURL || "http://localhost:5000/bill";
+const productURL = process.env.productURL || "http://localhost:5000/product";
+const reveiwURL = process.env.reveiwURL || "http://localhost:5000/review";
+const discountURL = process.env.discountURL || "http://localhost:5000/discount";
+const orderURL = process.env.orderURL || "http://localhost:5000/order";
+const cartURL = process.env.cartURL || "http://localhost:5000/cart";
 // users api
 
 export const getAllActioveUsers = () =>
@@ -72,6 +73,23 @@ export const updateUserAdmin = (userId, role) =>
   );
 export const getAllUsersinfo = () => axios.get(`${userURL}/all_user_info`);
 export const deleteUser = (id) => axios.delete(`${userURL}/delete_user/${id}`);
+export const getUserById = (id) => axios.get(`${userURL}/user_by_id/${id}`);
+export const updateUserCart = (user_id, id) =>
+  axios.patch(
+    `${userURL}/update_cart`,
+    { user_id: user_id, id: id },
+    {
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+export const updateUserCart2 = (id, cart, product_id) =>
+  axios.patch(
+    `${userURL}/update_user_cart`,
+    { id: id, cart: cart, product_id: product_id },
+    {
+      headers: { "Content-Type": "application/json" },
+    }
+  );
 //blog apis
 
 export const addNewBlog = (formData) =>
@@ -92,11 +110,16 @@ export const deleteBlog = (id) =>
     },
   });
 
-
-export const getRecentBlogs =()=>axios.get(`${blogURL}/recent_blogs`)
+export const getRecentBlogs = () => axios.get(`${blogURL}/recent_blogs`);
 export const getBlogById = (id) => axios.get(`${blogURL}/blog_by_id/${id}`);
 
-export const  getBlogs =() =>axios.get(`${blogURL}/blogs`)
+export const getBlogs = () => axios.get(`${blogURL}/blogs`);
+export const updateBlogViews = (id, view) =>
+  axios.patch(
+    `${blogURL}/update_view`,
+    { id: id, views: view },
+    { headers: { "Content-Type": "application/json" } }
+  );
 /// upload images
 
 export const imagePath = (formData) =>
@@ -163,8 +186,24 @@ export const deleteProductById = (id) =>
 export const getProductById = (id) =>
   axios.get(`${productURL}/product_one/${id}`);
 
+export const getAllProducts = () => axios.get(`${productURL}/all_products`);
 
-  export const getAllProducts = ()=>axios.get(`${productURL}/all_products`);
+export const updateProductsSold = (id, sold_num) =>
+  axios.patch(
+    `${productURL}/update_product_sold`,
+    { id: id, sold_num: sold_num },
+    {
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+export const updateProductsCart = (id, cart_num) =>
+  axios.patch(
+    `${productURL}/update_product_cart`,
+    { id: id, cart_num: cart_num },
+    {
+      headers: { "Content-Type": "application/json" },
+    }
+  );
 /// Reviews Api
 
 export const getAllReveiws = () => axios.get(`${reveiwURL}/get_reviews`);
@@ -195,17 +234,32 @@ export const addDiscount = (data) =>
     headers: { "Content-Type": "application/json" },
   });
 
+// orders APIs
 
-  // orders APIs
-
-  export const addNewOrder = (order) =>axios.post(`${orderURL}/new_order` , order , {
+export const addNewOrder = (order) =>
+  axios.post(`${orderURL}/new_order`, order, {
     headers: { "Content-Type": "application/json" },
   });
 
+export const getAllOrders = () => axios.get(`${orderURL}/all_orders`);
+export const updateOrder = (id, progress) =>
+  axios.patch(
+    `${orderURL}/update_order`,
+    { id: id, progress: progress },
+    {
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+export const deleteORder = (id) =>
+  axios.delete(`${orderURL}/delete_order/${id}`);
 
-  export const getAllOrders =()=>axios.get(`${orderURL}/all_orders`)
-  export const updateOrder =(id, progress)=>axios.patch(`${orderURL}/update_order` , {id :id , progress :progress} , {
-    headers: { "Content-Type": "application/json" },
-
-  })
-  export const deleteORder =(id)=>axios.delete(`${orderURL}/delete_order/${id}` )
+//cart APIS
+export const addToCart = (product, user_id) =>
+  axios.post(
+    `${cartURL}/add_to_cart`,
+    { product: product, user_id: user_id },
+    {
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+export const deleteCart = (id) => axios.delete(`${cartURL}/delete_cart/${id}`);

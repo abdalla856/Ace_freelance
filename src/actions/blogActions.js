@@ -80,3 +80,12 @@ export const updateBlog = (blog) => async (dispatch) => {
   }
 };
 
+export const updateBlogViews =(id , views) =>async (dispatch)=>{
+  try {
+const {data} = await api.updateBlogViews(id, views)
+dispatch({ type: "UPDATE", payload: data });
+
+  }catch(err){
+    console.log(err.message);
+  }
+}

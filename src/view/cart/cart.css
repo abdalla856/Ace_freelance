@@ -16,6 +16,7 @@
 }
 .cart table thead td {
   font-weight: 700;
+  text-align: center;
   font-size: 35.8882px;
 }
 .cart table tbody td {
@@ -25,6 +26,8 @@
   font-weight: 500;
   font-size: 27.4964px;
   text-transform: uppercase;
+  text-align: center;
+
 }
 .cart table tbody td .product-img {
   width: 115px;
@@ -105,8 +108,13 @@
 }
 
 .cart .actions .checkout {
-  background-color: #3444da;
-  color: #ffffff;
+  /* background-color: #3444da; */
+  /* color: #ffffff; */
+  padding: 10px 20px;
+  font-weight: 500 ;
+  font-size: 37.9797px;
+  margin-left: 30px;
+  text-transform: uppercase;
 }
 
 .cart .discounts {
@@ -123,4 +131,9 @@
 }
 .cart .discounts p a{
     color: black;
+}
+.checkbox input{
+  width: 20px;
+  height: 20px;
+  /* text-align: center; */
 }

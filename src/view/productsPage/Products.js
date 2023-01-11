@@ -12,10 +12,14 @@ import {
 } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { getUserById } from "../../actions/usersActions";
+import Cookies from "js-cookie";
 const Products = () => {
   const { service } = useParams();
   const [services, setServices] = useState("");
   const dispatch = useDispatch();
+  const { userId } = JSON.parse(Cookies.get("user") || "{}");
+
   useEffect(() => {
     if (service === "web") {
       setServices("Web Technology");
@@ -30,18 +34,25 @@ const Products = () => {
       setServices("Mechanical Design");
       dispatch(getAllMechanicalProducts());
     }
+    dispatch(getUserById(userId));
   }, [service]);
   const products = useSelector((state) => state.Products);
+  const user = useSelector((state) =>state.Users)
   return (
     <>
       <Navbar />
       <div className="products">
         <div className="sm-nav">
           <div className="container">
-            <span className="location">Home{">"}Services{">"}{services}</span>
+            <span className="location">
+              Home{">"}Services{">"}
+              {services}
+            </span>
             <div className="cart-icon">
               <AiOutlineShoppingCart />
-              <span>Cart[0]</span>
+              <Link to={"/cart"}>
+                <span>Cart[{user?.cart?.length || 0}]</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -54,7 +65,7 @@ const Products = () => {
           <div className="product-cards">
             {products.map((product) => {
               return (
-                <Link to ={`${product._id}`}>
+                <Link to={`${product._id}`}>
                   <div className="product">
                     <div className="product-slider-img">
                       <img src={product?.images[0]} alt="" />
@@ -69,7 +80,7 @@ const Products = () => {
                     </div>
                   </div>
                 </Link>
-              )
+              );
             })}
 
             {/* 

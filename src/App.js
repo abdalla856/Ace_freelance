@@ -30,6 +30,7 @@ import Discounts from "./view/admin/discounts/discountPage";
 import Products from "./view/productsPage/Products";
 import Product from "./view/productPage/Product";
 import Cart from "./view/cart/Cart";
+
 function App() {
   const storedData = JSON.parse(Cookies.get("user") || "{}");
   let routes;
@@ -57,6 +58,7 @@ function App() {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:id" element={<SingleBlog />} />
         <Route path="/update_blog/:id" element={<UpdateBlog />} />
+        <Route path="/cart" element={<Cart />} />
 
         <Route path="/web_add_product" element={<WebAddProduct />} />
         <Route path="/add_web_pro" element={<AddWebPage />} />
@@ -104,7 +106,7 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/services/:service" element={<Products />} />
-          <Route path="/services/:service/:id" element={<Product />} />
+        <Route path="/services/:service/:id" element={<Product />} />
         <Route path="/" element={<Landing />} />
         <Route path="*" element={<Landing />} />
       </Routes>

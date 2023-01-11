@@ -19,12 +19,15 @@ import { CLIENT_ID } from "../../Config/Config";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useSelector, useDispatch } from "react-redux";
 import { AddOrder } from "../../actions/orderActions";
+import { getUserById } from "../../actions/usersActions";
+import { AddToCart } from "../../actions/cartActions";
+import { Link } from "react-router-dom";
+
 const Product = () => {
   const { service, id } = useParams();
   const [services, setServices] = useState("");
   const dispatch = useDispatch();
   const { userId } = JSON.parse(Cookies.get("user") || "{}");
-
 
   useEffect(() => {
     if (service === "web") {
@@ -40,14 +43,15 @@ const Product = () => {
       setServices("Mechanical Design");
       dispatch(getAllMechanicalProducts());
     }
+    dispatch(getUserById(userId));
   }, [service]);
   const products = useSelector((state) => state.Products);
-  const recentpoduct = products.find((item) => item?._id === id);
-  const reltedproducts = products.filter(
+  var recentpoduct = products.find((item) => item?._id === id);
+  var reltedproducts = products.filter(
     (blog) =>
       blog?.type === recentpoduct?.type && blog?._id !== recentpoduct?._id
   );
-
+  const user = useSelector((state) => state.Users);
   const [show, setShow] = useState(false);
   const [success, setSuccess] = useState(false);
   const [ErrorMessage, setErrorMessage] = useState("");
@@ -55,8 +59,8 @@ const Product = () => {
 
   // creates a paypal order
   const createOrder = (data, actions) => {
-    return actions.order.create({
-       
+    return actions.order
+      .create({
         purchase_units: [
           {
             description: recentpoduct?.title,
@@ -71,7 +75,6 @@ const Product = () => {
         return orderID;
       });
   };
-
   // check Approval
   const onApprove = (data, actions) => {
     return actions.order.capture().then(function (details) {
@@ -88,13 +91,30 @@ const Product = () => {
   useEffect(() => {
     if (success) {
       console.log("Order successful . Your order id is--", orderID);
-      const orderInfo = { user_id: userId, product_id: id, order_id: orderID };
+      const orderInfo = {
+        user_id: userId,
+        product_id: id,
+        order_id: orderID,
+        sold: recentpoduct?.buy,
+      };
       dispatch(AddOrder(orderInfo));
-      alert("Payment successful!!");
-      setShow(false)
+      // alert("Payment successful!!");
+      setShow(false);
     }
-  }, [success ,createOrder , dispatch ]);
+  }, [success, AddOrder, dispatch]);
 
+  const carthandler = (e) => {
+    e.preventDefault();
+    dispatch(AddToCart(recentpoduct?._id, userId));
+    alert("Add To The Cart Successfully");
+  };
+  useEffect(() => {
+    recentpoduct = products.find((item) => item?._id === id);
+    reltedproducts = products.filter(
+      (blog) =>
+        blog?.type === recentpoduct?.type && blog?._id !== recentpoduct?._id
+    );
+  }, [dispatch]);
   return (
     <>
       <PayPalScriptProvider
@@ -110,13 +130,15 @@ const Product = () => {
               </span>
               <div className="cart">
                 <AiOutlineShoppingCart />
-                <span>Cart[0]</span>
+                <Link to={"/cart"}>
+                  <span>Cart[{user?.cart?.length || 0}]</span>
+                </Link>
               </div>
             </div>
           </div>
           <div className="container">
             <div className="theProduct">
-              <img src={recentpoduct?.images[0]} alt="product" />
+              <img src={recentpoduct?.images!==undefined ?recentpoduct?.images[0] : ""} alt="product" />
               <div className="product-details">
                 <h3 className="product-name">{recentpoduct?.title}</h3>
                 <div className="stars">
@@ -133,7 +155,9 @@ const Product = () => {
                   <MdOutlineKeyboardArrowDown />
                 </div>
                 <div className="actions">
-                  <button className="add-cart">add to cart</button>
+                  <button className="add-cart" onClick={carthandler}>
+                    add to cart
+                  </button>
                   <PayPalButtons
                     // className="buy"
                     createOrder={createOrder}

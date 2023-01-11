@@ -38,7 +38,7 @@ const BlogList = () => {
               <td>{blog.title}</td>
               <td>{Moment(blog.createdAt).format("DD/MM/yy hh:mm A")}</td>
               <td>{Moment(blog.updatedAt).format("DD/MM/yy hh:mm A")}</td>
-              <td>{blog.reviews}</td>
+              <td>{blog.views}</td>
               <td className="action_btns">
                 <Link to={`/update_blog/${blog._id}`} >
 

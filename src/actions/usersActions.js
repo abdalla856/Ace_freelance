@@ -103,9 +103,9 @@ export const updateUser = (id, date, role) => async (dispatch) => {
 
 export const updateUserAdmin = (id, role) => async (dispatch) => {
   try {
-    const {data} = await api.updateUserAdmin(id , role )
-    dispatch({type:"Update_User" ,payload :data})
-    return {status :202}
+    const { data } = await api.updateUserAdmin(id, role);
+    dispatch({ type: "Update_User", payload: data });
+    return { status: 202 };
   } catch (err) {
     console.log(err);
   }
@@ -125,6 +125,15 @@ export const deleteUser = (id) => async (dispatch) => {
     const res = await api.deleteUser(id);
 
     dispatch({ type: "DELETE_USER", payload: id });
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+export const getUserById = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.getUserById(id);
+    dispatch({ type: "FETCH", payload: data });
   } catch (err) {
     console.log(err.message);
   }
